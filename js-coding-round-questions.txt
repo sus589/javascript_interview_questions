@@ -1,0 +1,163 @@
+Yesss 🔥
+Yeh JavaScript Coding Round Questions hain — Hinglish mein, real interview level, step-by-step logic ke saath.
+Angular / Frontend coding rounds mein exactly aise hi questions aate hain 💯
+
+🟢 Beginner Coding Questions
+1️⃣ Reverse a String
+
+Question: "hello" → "olleh"
+
+function reverseString(str){
+  return str.split('').reverse().join('');
+}
+
+
+👉 Interview bolna: string → array → reverse → join
+
+2️⃣ Check Palindrome
+
+Question: "madam"
+
+function isPalindrome(str){
+  let rev = str.split('').reverse().join('');
+  return str === rev;
+}
+
+3️⃣ Find Largest Number in Array
+function largest(arr){
+  return Math.max(...arr);
+}
+
+4️⃣ Count Vowels
+function countVowels(str){
+  let vowels = "aeiou";
+  let count = 0;
+  for(let ch of str){
+    if(vowels.includes(ch)) count++;
+  }
+  return count;
+}
+
+5️⃣ Even or Odd
+function isEven(num){
+  return num % 2 === 0;
+}
+
+🟡 Intermediate Coding Questions
+6️⃣ Remove Duplicates from Array
+function removeDuplicates(arr){
+  return [...new Set(arr)];
+}
+
+7️⃣ Find Frequency of Elements
+function frequency(arr){
+  let obj = {};
+  arr.forEach(x=>{
+    obj[x] = (obj[x] || 0) + 1;
+  });
+  return obj;
+}
+
+8️⃣ Sum of Array using reduce
+let sum = arr.reduce((a,b)=>a+b,0);
+
+9️⃣ Find Second Largest Number
+function secondLargest(arr){
+  let unique = [...new Set(arr)];
+  unique.sort((a,b)=>b-a);
+  return unique[1];
+}
+
+🔟 FizzBuzz
+for(let i=1;i<=100;i++){
+  if(i%15===0) console.log("FizzBuzz");
+  else if(i%3===0) console.log("Fizz");
+  else if(i%5===0) console.log("Buzz");
+  else console.log(i);
+}
+
+🔵 Advanced Coding Questions
+1️⃣1️⃣ Flatten an Array
+let arr = [1,[2,[3,4]]];
+let flat = arr.flat(Infinity);
+
+1️⃣2️⃣ Debounce Function
+function debounce(fn, delay){
+  let timer;
+  return function(){
+    clearTimeout(timer);
+    timer = setTimeout(()=>fn(), delay);
+  }
+}
+
+1️⃣3️⃣ Throttle Function
+function throttle(fn, limit){
+  let flag = true;
+  return function(){
+    if(flag){
+      fn();
+      flag = false;
+      setTimeout(()=>flag=true, limit);
+    }
+  }
+}
+
+1️⃣4️⃣ Deep Copy Object
+let deep = JSON.parse(JSON.stringify(obj));
+
+
+👉 Interview note: nested object ke liye
+
+1️⃣5️⃣ Promise Example
+function fetchData(){
+  return new Promise((resolve,reject)=>{
+    resolve("Data received");
+  });
+}
+
+1️⃣6️⃣ Async / Await Example
+async function getData(){
+  let res = await fetch(url);
+  let data = await res.json();
+}
+
+1️⃣7️⃣ Closure Example
+function counter(){
+  let count = 0;
+  return function(){
+    count++;
+    return count;
+  }
+}
+
+🔥 Tricky Output Based Questions
+1️⃣8️⃣
+console.log(1 + "2" + 3); // "123"
+
+1️⃣9️⃣
+console.log([] == []); // false
+
+2️⃣0️⃣
+console.log(0 == false); // true
+
+🎯 Coding Round Tips (Golden ❤️)
+
+✔ Pehle approach explain karo
+✔ Edge cases batao
+✔ Clean & readable code likho
+✔ ES6 use karo
+✔ Time complexity mention karo
+
+Agar tum chaho toh next:
+
+🧠 Tricky JS Output Questions (Deep)
+
+📄 JS Coding PDF
+
+🎯 Angular Coding Round
+
+💻 Live practice problems
+
+🔥 Mock interview questions
+
+Bas bol do 👉 next kya karein? 🚀

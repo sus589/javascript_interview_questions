@@ -1,0 +1,230 @@
+Bilkul 👍
+Yeh JavaScript ke topics hain — beginner se advanced tak, Hinglish mein, step-by-step order mein. Agar tum Angular pe kaam kar rahi ho, toh yeh JS topics must-have hain 💪
+
+🟢 Beginner JavaScript Topics (Foundation strong karne ke liye)
+
+JavaScript kya hai & kaise kaam karta hai
+
+var, let, const (scope samjho ache se)
+
+Data Types
+
+string, number, boolean
+
+null, undefined
+
+object, array
+
+Operators
+
+arithmetic (+ - * /)
+
+comparison (== === != !==)
+
+logical (&& || !)
+
+Conditional Statements
+
+if, else, else if
+
+switch
+
+Loops
+
+for, while, do while
+
+break, continue
+
+Functions
+
+normal function
+
+function expression
+
+arrow function ()=>{}
+
+Arrays
+
+create array
+
+push, pop, shift, unshift
+
+length
+
+Objects
+
+key-value pairs
+
+access using dot & bracket
+
+🟡 Intermediate JavaScript Topics (Real-world JS yahin se start hoti hai)
+
+Array Methods (🔥 most important)
+
+map()
+
+filter()
+
+reduce()
+
+forEach()
+
+find()
+
+some(), every()
+
+String Methods
+
+slice(), substring()
+
+split(), join()
+
+toUpperCase(), toLowerCase()
+
+Scope & Hoisting
+
+global scope
+
+block scope
+
+function scope
+
+hoisting ka concept
+
+this keyword
+
+normal function vs arrow function
+
+object ke andar this
+
+Callbacks
+
+function ke andar function
+
+async ka base
+
+DOM Manipulation (Angular se pehle must)
+
+getElementById
+
+querySelector
+
+innerHTML
+
+classList
+
+addEventListener
+
+Events
+
+click, input, submit
+
+event bubbling & capturing
+
+🔵 Advanced JavaScript Topics (Angular ke liye 🔥🔥)
+
+ES6+ Features (MOST IMPORTANT)
+
+let, const
+
+arrow functions
+
+template literals `hello ${name}`
+
+destructuring
+
+spread operator ...
+
+rest operator
+
+Promises
+
+then(), catch()
+
+promise states
+
+Async / Await
+
+async function
+
+await ka use
+
+error handling with try/catch
+
+Closures
+
+function ke andar function
+
+data secure kaise hota hai
+
+Event Loop
+
+call stack
+
+microtask queue
+
+macrotask queue
+
+Modules
+
+export, import
+
+Error Handling
+
+try, catch, finally
+
+LocalStorage & SessionStorage
+
+setItem
+
+getItem
+
+removeItem
+
+🔥 JavaScript for Angular Developer (Tumhare career ke liye important)
+
+JSON handling
+
+API calling basics (fetch)
+
+Debouncing & Throttling
+
+Shallow vs Deep Copy
+
+Mutable vs Immutable data
+
+== vs ===
+
+null vs undefined
+
+How JS works behind the scenes
+
+🎯 Recommended Learning Path (Sachchi advice ❤️)
+
+👉 Pehle yeh clear karo:
+
+variables
+
+functions
+
+arrays
+
+objects
+
+array methods
+
+async / await
+
+Uske baad Angular 10x easy lagega 🚀
+
+Agar tum chaho toh:
+
+📘 har topic ka Hinglish explanation
+
+🧩 interview questions
+
+💻 mini JS projects
+
+📄 PDF / notes
+
+bas bol do 👉 “Beginner se start karao” ya “Angular focus JS” 😊

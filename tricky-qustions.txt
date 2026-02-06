@@ -1,0 +1,280 @@
+Yess 🔥
+Yeh Tricky JavaScript Output Questions (Deep Level) hain — exact interview type, jo concept + confidence dono test karte hain.
+Main har question ke saath output + short Hinglish explanation de rahi hoon 💯
+
+🔥 Tricky JS Output Questions (Deep)
+1️⃣
+console.log(typeof null);
+
+✅ Output:
+object
+
+💡 Explanation:
+
+JavaScript ka historic bug hai. null ek primitive hai but typeof object bolta hai.
+
+2️⃣
+console.log([] + []);
+
+✅ Output:
+""
+
+💡 Explanation:
+
+Array → string convert hota hai → empty string + empty string = ""
+
+3️⃣
+console.log([] + {});
+
+✅ Output:
+"[object Object]"
+
+4️⃣
+console.log({} + []);
+
+✅ Output:
+0
+
+💡 Explanation:
+
+JS {} ko empty block maan leta hai, +[] → 0
+
+5️⃣
+console.log(1 + true);
+
+✅ Output:
+2
+
+
+true → 1
+
+6️⃣
+console.log(true + false);
+
+✅ Output:
+1
+
+7️⃣
+console.log("5" - 2);
+
+✅ Output:
+3
+
+
+Minus operator number bana deta hai
+
+8️⃣
+console.log("5" + 2);
+
+✅ Output:
+"52"
+
+9️⃣
+console.log(0 == false);
+
+✅ Output:
+true
+
+🔟
+console.log(0 === false);
+
+✅ Output:
+false
+
+1️⃣1️⃣
+console.log([] == false);
+
+✅ Output:
+true
+
+1️⃣2️⃣
+console.log(null == undefined);
+
+✅ Output:
+true
+
+1️⃣3️⃣
+console.log(null === undefined);
+
+✅ Output:
+false
+
+1️⃣4️⃣
+console.log(NaN == NaN);
+
+✅ Output:
+false
+
+
+👉 NaN kabhi equal nahi hota
+
+1️⃣5️⃣
+console.log(typeof NaN);
+
+✅ Output:
+number
+
+⏱ Async + Event Loop Tricky
+1️⃣6️⃣
+console.log("start");
+
+setTimeout(()=>{
+  console.log("timeout");
+},0);
+
+console.log("end");
+
+✅ Output:
+start
+end
+timeout
+
+1️⃣7️⃣
+console.log("a");
+
+Promise.resolve().then(()=>{
+  console.log("b");
+});
+
+console.log("c");
+
+✅ Output:
+a
+c
+b
+
+
+👉 Promise = microtask (pehle execute)
+
+1️⃣8️⃣
+setTimeout(()=>{
+  console.log("timeout");
+},0);
+
+Promise.resolve().then(()=>{
+  console.log("promise");
+});
+
+✅ Output:
+promise
+timeout
+
+1️⃣9️⃣ Closure Tricky
+for(var i=0;i<3;i++){
+  setTimeout(()=>{
+    console.log(i);
+  },1000);
+}
+
+✅ Output:
+3
+3
+3
+
+
+👉 var function scoped hai
+
+2️⃣0️⃣ Fix using let
+for(let i=0;i<3;i++){
+  setTimeout(()=>{
+    console.log(i);
+  },1000);
+}
+
+✅ Output:
+0
+1
+2
+
+🔥 Objects & Reference Tricky
+2️⃣1️⃣
+let a = {};
+let b = a;
+b.name = "JS";
+console.log(a.name);
+
+✅ Output:
+JS
+
+2️⃣2️⃣
+let a = [1,2];
+let b = a;
+b.push(3);
+console.log(a);
+
+✅ Output:
+[1,2,3]
+
+2️⃣3️⃣
+const obj = {a:1};
+obj.a = 2;
+console.log(obj);
+
+✅ Output:
+{a:2}
+
+
+👉 const reference lock karta hai, value nahi
+
+2️⃣4️⃣
+console.log([1,2] == [1,2]);
+
+✅ Output:
+false
+
+🧠 Function Tricky
+2️⃣5️⃣
+function test(){
+  console.log(a);
+  var a = 10;
+}
+test();
+
+✅ Output:
+undefined
+
+2️⃣6️⃣
+let x = 10;
+(function(){
+  console.log(x);
+  let x = 20;
+})();
+
+✅ Output:
+ReferenceError
+
+
+👉 Temporal Dead Zone
+
+2️⃣7️⃣
+console.log(foo);
+function foo(){}
+
+✅ Output:
+ƒ foo(){}
+
+2️⃣8️⃣
+console.log(foo);
+var foo = 10;
+
+✅ Output:
+undefined
+
+🎯 Interview Master Tips ❤️
+
+✔ Pehle predict output
+✔ Fir kyun aaya explain karo
+✔ Keywords use karo:
+type coercion, hoisting, event loop, closure, TDZ
+
+Agar tum chaho toh next:
+
+🔥 Ultra Tricky JS (Output Guessing)
+
+📄 JS Interview PDF (All-in-One)
+
+🎯 Angular + JS combined questions
+
+💻 Mock Interview (Q&A style)
+
+Bas bol do 👉 next kya karein? 🚀

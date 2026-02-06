@@ -1,0 +1,206 @@
+Perfect 🔥
+Yeh JavaScript Interview Questions hain — Hinglish mein, answers + examples ke saath, jo Angular / Frontend interviews mein real-life pooche jaate hain 💯
+
+🟢 JavaScript Interview Questions – Beginner
+1️⃣ JavaScript kya hai?
+
+JavaScript ek interpreted, single-threaded, synchronous language hai jo browser mein run hoti hai aur website ko interactive banati hai.
+
+👉 Interview tip: “JS is single-threaded but handles async using event loop” bolna 🔥
+
+2️⃣ var, let, const mein difference?
+Feature	var	let	const
+Scope	Function	Block	Block
+Reassign	✅	✅	❌
+Hoisting	Yes (undefined)	Yes (TDZ)	Yes (TDZ)
+
+👉 Angular mein mostly let & const
+
+3️⃣ == vs ===
+
+== → value compare
+
+=== → value + type compare (preferred)
+
+5 == "5"   // true
+5 === "5"  // false
+
+4️⃣ null vs undefined
+
+undefined → value assign nahi hui
+
+null → value intentionally empty
+
+5️⃣ Hoisting kya hota hai?
+
+JS variables & functions ko execution se pehle memory mein le jata hai.
+
+console.log(a); // undefined
+var a = 10;
+
+6️⃣ Scope kya hota hai?
+
+Scope batata hai variable kahan accessible hai:
+
+Global
+
+Function
+
+Block (let, const)
+
+7️⃣ Function types?
+
+Normal function
+
+Arrow function
+
+Anonymous function
+
+Callback function
+
+8️⃣ Arrow function vs normal function?
+
+Arrow function ka this nahi hota
+
+Normal function ka this context pe depend karta hai
+
+🟡 JavaScript Interview Questions – Intermediate
+9️⃣ this keyword kya hai?
+
+this current execution context ko refer karta hai.
+
+👉 Angular components mein this = component class
+
+🔟 Callback function kya hota hai?
+
+Function jo kisi function ke andar pass hota hai.
+
+setTimeout(() => {
+  console.log("Hello");
+}, 1000);
+
+1️⃣1️⃣ map vs forEach
+map	forEach
+new array return	kuch return nahi
+chainable	chainable nahi
+1️⃣2️⃣ filter vs find
+
+filter → multiple values
+
+find → first matching value
+
+1️⃣3️⃣ reduce kyun use karte hain?
+
+Array ko single value mein convert karne ke liye.
+
+1️⃣4️⃣ Shallow vs Deep copy
+
+Shallow → reference copy
+
+Deep → actual data copy
+
+let a = {...obj}; // shallow
+
+1️⃣5️⃣ Mutable vs Immutable
+
+Mutable → change allowed
+
+Immutable → change nahi, naya object
+
+👉 Angular mein immutability preferred
+
+1️⃣6️⃣ Closures kya hote hain?
+
+Function apne outer scope ka data yaad rakhta hai.
+
+1️⃣7️⃣ Event Bubbling?
+
+Event child se parent ki taraf jata hai.
+
+1️⃣8️⃣ Event Delegation?
+
+Parent pe event lagake child handle karna (performance 🔥)
+
+🔵 JavaScript Interview Questions – Advanced
+1️⃣9️⃣ Event Loop explain karo
+
+JS async kaise handle karta hai:
+
+Call Stack
+
+Microtask Queue (Promise)
+
+Macrotask Queue (setTimeout)
+
+2️⃣0️⃣ Promise kya hota hai?
+
+Async operation ka result handle karta hai.
+
+States:
+
+pending
+
+fulfilled
+
+rejected
+
+2️⃣1️⃣ async/await kyun better hai?
+
+Readable code + try/catch error handling
+
+2️⃣2️⃣ Debounce vs Throttle
+
+Debounce → last call execute
+
+Throttle → fixed interval pe execute
+
+👉 Search input, scroll events
+
+2️⃣3️⃣ LocalStorage vs SessionStorage
+Local	Session
+Permanent	Tab close = data gone
+5–10MB	Same
+2️⃣4️⃣ setTimeout(0) ka kya matlab?
+
+Async banane ke liye — callback event loop ke baad chalega
+
+2️⃣5️⃣ Single-threaded JS ka matlab?
+
+JS ek time pe ek hi kaam karta hai
+Async tasks background mein handle hote hain
+
+🔥 Angular-Focused JS Questions
+2️⃣6️⃣ Why immutability in Angular?
+
+Change detection fast hota hai
+
+2️⃣7️⃣ Observable vs Promise (JS base)
+
+Promise → single value
+
+Observable → multiple values (RxJS)
+
+2️⃣8️⃣ Spread vs Rest operator
+function sum(...nums){} // rest
+let arr2 = [...arr1];   // spread
+
+🎯 Interview Golden Tips (Important ❤️)
+
+✔ Code likhte hue explain karo
+✔ Real-world example do
+✔ JS fundamentals strong dikhao
+✔ Async flow explain karo
+
+Agar tum chaho toh next main:
+
+💥 JS Coding Round Questions
+
+🧠 Tricky JS Output Questions
+
+🧩 Mini JS Projects
+
+📄 Interview PDF Notes
+
+🎯 Angular interview full prep
+
+Bas bol do 👉 next kya chahiye? 🚀

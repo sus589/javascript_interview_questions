@@ -1,0 +1,221 @@
+🔥 Nice choice — yeh real coding round level hai
+Ab hum JavaScript Coding Questions WITHOUT in-built methods (no map, filter, reduce, reverse, sort, Set etc.) karenge.
+Sirf loops, condition, logic — interviewers yahin pe judge karte hain 💯
+
+🟢 Beginner (No In-Built Methods)
+1️⃣ Reverse a String
+function reverseString(str){
+  let result = "";
+  for(let i = str.length - 1; i >= 0; i--){
+    result += str[i];
+  }
+  return result;
+}
+
+2️⃣ Check Palindrome
+function isPalindrome(str){
+  let start = 0;
+  let end = str.length - 1;
+
+  while(start < end){
+    if(str[start] !== str[end]){
+      return false;
+    }
+    start++;
+    end--;
+  }
+  return true;
+}
+
+3️⃣ Find Largest Number in Array
+function largest(arr){
+  let max = arr[0];
+  for(let i = 1; i < arr.length; i++){
+    if(arr[i] > max){
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+4️⃣ Count Vowels
+function countVowels(str){
+  let count = 0;
+  let vowels = "aeiouAEIOU";
+
+  for(let i = 0; i < str.length; i++){
+    if(vowels.indexOf(str[i]) !== -1){
+      count++;
+    }
+  }
+  return count;
+}
+
+5️⃣ Even or Odd
+function isEven(num){
+  if(num % 2 === 0) return "Even";
+  else return "Odd";
+}
+
+🟡 Intermediate (No In-Built Methods)
+6️⃣ Remove Duplicates from Array
+function removeDuplicates(arr){
+  let result = [];
+
+  for(let i = 0; i < arr.length; i++){
+    let isDuplicate = false;
+
+    for(let j = 0; j < result.length; j++){
+      if(arr[i] === result[j]){
+        isDuplicate = true;
+        break;
+      }
+    }
+
+    if(!isDuplicate){
+      result[result.length] = arr[i];
+    }
+  }
+  return result;
+}
+
+7️⃣ Frequency of Elements
+function frequency(arr){
+  let obj = {};
+
+  for(let i = 0; i < arr.length; i++){
+    if(obj[arr[i]] === undefined){
+      obj[arr[i]] = 1;
+    } else {
+      obj[arr[i]]++;
+    }
+  }
+  return obj;
+}
+
+8️⃣ Sum of Array
+function sumArray(arr){
+  let sum = 0;
+  for(let i = 0; i < arr.length; i++){
+    sum += arr[i];
+  }
+  return sum;
+}
+
+9️⃣ Find Second Largest Number
+function secondLargest(arr){
+  let first = -Infinity;
+  let second = -Infinity;
+
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] > first){
+      second = first;
+      first = arr[i];
+    } else if(arr[i] > second && arr[i] !== first){
+      second = arr[i];
+    }
+  }
+  return second;
+}
+
+🔟 FizzBuzz
+function fizzBuzz(n){
+  for(let i = 1; i <= n; i++){
+    if(i % 15 === 0) console.log("FizzBuzz");
+    else if(i % 3 === 0) console.log("Fizz");
+    else if(i % 5 === 0) console.log("Buzz");
+    else console.log(i);
+  }
+}
+
+🔵 Advanced (No In-Built Methods)
+1️⃣1️⃣ Flatten an Array
+function flatten(arr){
+  let result = [];
+
+  for(let i = 0; i < arr.length; i++){
+    if(typeof arr[i] === "object"){
+      let flat = flatten(arr[i]);
+      for(let j = 0; j < flat.length; j++){
+        result[result.length] = flat[j];
+      }
+    } else {
+      result[result.length] = arr[i];
+    }
+  }
+  return result;
+}
+
+1️⃣2️⃣ Deep Copy Object
+function deepCopy(obj){
+  let copy = {};
+
+  for(let key in obj){
+    if(typeof obj[key] === "object"){
+      copy[key] = deepCopy(obj[key]);
+    } else {
+      copy[key] = obj[key];
+    }
+  }
+  return copy;
+}
+
+1️⃣3️⃣ Debounce (No in-built magic)
+function debounce(fn, delay){
+  let timer;
+
+  return function(){
+    if(timer){
+      clearTimeout(timer);
+    }
+    timer = setTimeout(fn, delay);
+  }
+}
+
+1️⃣4️⃣ Throttle
+function throttle(fn, limit){
+  let isCalled = false;
+
+  return function(){
+    if(!isCalled){
+      fn();
+      isCalled = true;
+
+      setTimeout(()=>{
+        isCalled = false;
+      }, limit);
+    }
+  }
+}
+
+1️⃣5️⃣ Promise (Manual)
+function myPromise(){
+  return new Promise(function(resolve, reject){
+    let success = true;
+
+    if(success){
+      resolve("Success");
+    } else {
+      reject("Error");
+    }
+  });
+}
+
+🎯 Interview Golden Lines (Bolne layak 🔥)
+
+🗣️ “I avoided in-built methods to show logical understanding and control over loops.”
+🗣️ “This solution has O(n) time complexity.”
+
+Agar tum chaho toh next:
+
+🧠 Ultra Hard JS Coding
+
+🧪 Edge-case based questions
+
+📄 Coding Round PDF
+
+🎯 Angular Coding Round Questions
+
+🧑‍💻 Live mock coding
+
+Bas bol do 👉 next kya chahiye? 🚀
