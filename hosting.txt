@@ -1,0 +1,158 @@
+## in hinglish javascript Hoisting kya hai q use hota hai kaab use hota hai example deke samjhao
+
+Bilkul 👍 chalo JavaScript Hoisting ko easy Hinglish + real examples ke saath samajhte hain.
+Yeh interview + real project dono ke liye 🔥 topic hai.
+
+🔹 Hoisting kya hota hai?
+Hoisting JavaScript ka behavior hai jisme variables aur functions ko execution se pehle memory me upar (top) le jaya jata hai.
+
+Matlab:
+JS code run hone se pehle hi bol deta hai —
+“haan bhai, mujhe pata hai ye variable / function exist karta hai” 😄
+
+⚠️ Important:
+
+
+Declaration hoist hoti hai
+
+
+Initialization hoist nahi hoti
+
+
+
+🔹 Hoisting kyu hota hai?
+JavaScript 2 phase me code run karti hai:
+1️⃣ Memory Creation Phase
+
+
+Variables ke liye memory allocate hoti hai
+
+
+Functions pura memory me store ho jate hain
+
+
+2️⃣ Execution Phase
+
+
+Line by line code execute hota hai
+
+
+Isi memory phase ki wajah se hoisting hoti hai.
+
+🔹 var hoisting (Sabse common interview trap 😈)
+❌ Example:
+console.log(a);
+var a = 10;
+
+✔️ Output:
+undefined
+
+❓ Why?
+JS internally aise treat karti hai:
+var a;        // hoisted
+console.log(a);
+a = 10;
+
+👉 var hoist hota hai with value = undefined
+
+🔹 let & const hoisting (Thoda dangerous ⚠️)
+❌ Example:
+console.log(b);
+let b = 20;
+
+❌ Output:
+ReferenceError: Cannot access 'b' before initialization
+
+❓ Reason:
+
+
+let & const bhi hoist hote hain
+
+
+BUT Temporal Dead Zone (TDZ) me rehte hain
+
+
+Jab tak initialize na ho jaye tab tak access nahi kar sakte
+
+
+👉 Isliye let/const safer hote hain 💪
+
+🔹 Function Hoisting (Yeh powerful hai 🚀)
+✔️ Example:
+sayHello();
+
+function sayHello() {
+  console.log("Hello JS");
+}
+
+✔️ Output:
+Hello JS
+
+👉 Function declaration fully hoisted hoti hai
+
+🔹 Function Expression Hoisting (Trap 🚨)
+❌ Example:
+sayHi();
+
+var sayHi = function () {
+  console.log("Hi");
+};
+
+❌ Output:
+TypeError: sayHi is not a function
+
+❓ Why?
+Internally:
+var sayHi;   // hoisted as undefined
+sayHi();    // undefined()
+
+
+🔹 Arrow Function + Hoisting ⚠️
+hello();
+
+const hello = () => {
+  console.log("Hello");
+};
+
+❌ Error aayega
+👉 Arrow functions hoist nahi hoti like normal functions
+
+🔹 Kab hoisting use hota hai? (Real life use)
+✅ Function ko upar call karna
+initApp();
+
+function initApp() {
+  console.log("App Started");
+}
+
+❌ Variables ke liye use mat karo
+console.log(user); // ❌ bad practice
+let user = "Admin";
+
+
+🔹 Best Practices (Industry Level 💼)
+✅ Functions ko pehle define karo
+✅ Variables ke liye let / const use karo
+❌ var avoid karo
+❌ Hoisting pe depend mat raho
+
+🔹 One Line Interview Answer 🎯
+
+Hoisting is JavaScript behavior where variable and function declarations are moved to the top of their scope during the memory creation phase.
+
+
+Agar tum chaho next:
+
+
+🔥 Hoisting vs TDZ
+
+
+🔥 Hoisting + Closures
+
+
+🔥 Hoisting interview questions (tricky ones)
+
+
+Bas bolo 😄
+
+

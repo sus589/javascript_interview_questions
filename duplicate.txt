@@ -1,0 +1,130 @@
+Bilkul 🙂
+JavaScript me array se duplicates remove karna ka simple example Hinglish me samjho 👇
+
+🔹 Example 1: Using Set (sabse easy & common)
+let arr = [1, 2, 3, 2, 4, 1, 5];
+
+let uniqueArr = [...new Set(arr)];
+
+console.log(uniqueArr);
+
+
+Output:
+
+[1, 2, 3, 4, 5]
+
+
+Explanation (Hinglish):
+
+Set hamesha unique values hi rakhta hai
+
+new Set(arr) duplicates hata deta hai
+
+... (spread operator) Set ko wapas array bana deta hai
+
+🔹 Example 2: Without using Set (logic based)
+let arr = [1, 2, 3, 2, 4, 1, 5];
+let uniqueArr = [];
+
+for (let i = 0; i < arr.length; i++) {
+  if (uniqueArr.indexOf(arr[i]) === -1) {
+    uniqueArr.push(arr[i]);
+  }
+}
+
+console.log(uniqueArr);
+
+
+Explanation:
+
+indexOf() check karta hai value pehle se array me hai ya nahi
+
+Agar -1 aaya → value nahi hai → push kar do
+
+🔹 Example 3: Using filter()
+let arr = [1, 2, 3, 2, 4, 1, 5];
+
+let uniqueArr = arr.filter((item, index) => {
+  return arr.indexOf(item) === index;
+});
+
+console.log(uniqueArr);
+
+
+Explanation:
+
+filter() har element ka first occurrence hi rakhta hai
+
+Duplicate wale skip ho jaate hain
+
+✅ Interview Tip
+
+👉 Fast & clean answer chahiye interview me → Set wala use karo
+👉 Logic check ke liye → for loop / filter wala
+
+Agar chaho toh mai string array, object array, ya real project use-case ke example bhi dikha sakti hoon 🚀
+
+
+
+
+
+
+
+
+
+
+🔹 Remove Duplicates from Array (Without In-built Methods)
+✅ Example
+let arr = [1, 2, 3, 2, 4, 1, 5];
+let uniqueArr = [];
+
+for (let i = 0; i < arr.length; i++) {
+  let isDuplicate = false;
+
+  for (let j = 0; j < uniqueArr.length; j++) {
+    if (arr[i] === uniqueArr[j]) {
+      isDuplicate = true;
+      break;
+    }
+  }
+
+  if (!isDuplicate) {
+    uniqueArr.push(arr[i]);
+  }
+}
+
+console.log(uniqueArr);
+
+🟢 Output
+[1, 2, 3, 4, 5]
+
+🧠 Hinglish Explanation (Step by Step)
+
+Ek empty array banaya → uniqueArr
+
+arr ka har element check kiya
+
+Inner loop se dekha:
+
+agar value pehle se uniqueArr me hai → duplicate
+
+agar nahi hai → push kar do
+
+Final me sirf unique values bachti hain
+
+🔥 Interview Line (Yaad Rakhna)
+
+“Without inbuilt methods, maine nested loop use karke manually check kiya ki element pehle se unique array me exist karta hai ya nahi.”
+
+Agar chaho toh mai:
+
+String array ka example
+
+Sorted array ke liye optimized logic
+
+Time complexity explanation
+
+bhi simple Hinglish me samjha du 😄
+
+
+

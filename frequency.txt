@@ -1,0 +1,118 @@
+Bilkul 👍
+JavaScript me Frequency of Elements ko bilkul simple + step-by-step Hinglish me samjhte hain.
+
+Problem kya hai?
+
+Array me har element kitni baar repeat ho raha hai ye count karna.
+
+Example:
+let arr = [1, 2, 2, 3, 1, 4, 2];
+
+
+Expected Output:
+
+1 → 2 times
+2 → 3 times
+3 → 1 time
+4 → 1 time
+
+STEP 1️⃣ – Ek empty object banao
+let frequency = {};
+
+
+👉 Ye object count store karega
+Format hoga:
+
+number : count
+
+STEP 2️⃣ – Loop chalao array par
+for (let i = 0; i < arr.length; i++) {
+
+
+Ab hum ek-ek element check karenge.
+
+STEP 3️⃣ – Element ko variable me lo
+let element = arr[i];
+
+STEP 4️⃣ – Check karo element pehle se hai ya nahi
+if (frequency[element]) {
+  frequency[element] = frequency[element] + 1;
+} else {
+  frequency[element] = 1;
+}
+
+Matlab:
+
+Agar element pehle se object me hai → count +1
+
+Agar naya hai → count = 1
+
+STEP 5️⃣ – Loop complete hone ke baad
+console.log(frequency);
+
+FINAL COMPLETE CODE
+let arr = [1, 2, 2, 3, 1, 4, 2];
+let frequency = {};
+
+for (let i = 0; i < arr.length; i++) {
+  let element = arr[i];
+
+  if (frequency[element]) {
+    frequency[element] = frequency[element] + 1;
+  } else {
+    frequency[element] = 1;
+  }
+}
+
+console.log(frequency);
+
+Output:
+{
+  1: 2,
+  2: 3,
+  3: 1,
+  4: 1
+}
+
+STEP-BY-STEP DRY RUN 🧠
+Element	frequency object
+1	{1:1}
+2	{1:1, 2:1}
+2	{1:1, 2:2}
+3	{1:1, 2:2, 3:1}
+1	{1:2, 2:2, 3:1}
+4	{1:2, 2:2, 3:1, 4:1}
+2	{1:2, 2:3, 3:1, 4:1}
+Interview Tip 💡
+
+👉 Ye approach:
+
+O(n) time complexity
+
+No in-built methods
+
+Coding rounds me very common
+
+BONUS: String ka frequency (extra 🔥)
+let str = "javascript";
+let freq = {};
+
+for (let char of str) {
+  freq[char] = (freq[char] || 0) + 1;
+}
+
+console.log(freq);
+
+
+Agar chaho next main:
+
+🔥 Tricky frequency output questions
+
+💻 Without object (array approach)
+
+🧠 Map vs Object difference
+
+bhi samjha du 😄
+
+
+
