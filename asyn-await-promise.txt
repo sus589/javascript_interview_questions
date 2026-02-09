@@ -1,0 +1,192 @@
+## in hinglish in javascript async ,await ,promise  kya hai ,kaise use hota hai ,kaab use hota hai simple example deke samjhao
+
+Perfect 👍
+Ye async / await / Promise = real project + interview ke most important topics hain.
+Main bilkul simple Hinglish + step-by-step + daily-life logic se samjha rahi hoon 👇
+
+🔗 Promise kya hai?
+👉 Promise kya hota hai?
+
+Promise = future me milne wala result ka assurance
+
+Promise ke 3 states hote hain:
+
+Pending – abhi result nahi aaya
+
+Fulfilled – success
+
+Rejected – error
+
+🧠 Kab use hota hai?
+
+✔ API call
+✔ Async kaam (file read, timer, DB call)
+✔ Callback hell avoid karne ke liye
+
+✅ Simple Promise Example
+let promise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Data mil gaya");
+  } else {
+    reject("Error aa gaya");
+  }
+});
+
+promise
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+🖨 Output
+Data mil gaya
+
+🧠 Real-life example
+
+Online order:
+
+Order placed → Pending
+
+Delivered → Fulfilled
+
+Cancelled → Rejected
+
+⏳ async kya hai?
+👉 async kya karta hai?
+
+Function ko asynchronous bana deta hai
+Aur automatically Promise return karta hai
+
+✅ Example
+async function getData() {
+  return "Hello";
+}
+
+getData().then((res) => console.log(res));
+
+
+🖨 Output:
+
+Hello
+
+
+📌 Rule:
+async function hamesha Promise return karta hai
+
+🧠 Kab use hota hai?
+
+✔ Jab async code likhna ho
+✔ Promise ke sath clean syntax chahiye
+
+🕰 await kya hai?
+👉 await kya karta hai?
+
+Promise ke resolve hone ka wait karta hai
+
+📌 await sirf async function ke andar hi use hota hai
+
+✅ Example (without await 😵)
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("API Data");
+    }, 2000);
+  });
+}
+
+fetchData().then((res) => {
+  console.log(res);
+});
+
+✅ Same Example (with async/await 😍)
+async function fetchData() {
+  let data = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("API Data");
+    }, 2000);
+  });
+
+  console.log(data);
+}
+
+fetchData();
+
+
+🖨 Output (2 sec baad):
+
+API Data
+
+🔄 Promise vs async/await (Flow samjho)
+Promise way
+getData()
+  .then(res => process(res))
+  .then(final => show(final))
+  .catch(err => handle(err));
+
+async/await way
+try {
+  let res = await getData();
+  let final = process(res);
+  show(final);
+} catch (err) {
+  handle(err);
+}
+
+
+📌 async/await = cleaner + readable
+
+⚠ Error handling
+Promise
+fetchData()
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+
+async/await
+try {
+  let res = await fetchData();
+  console.log(res);
+} catch (err) {
+  console.log(err);
+}
+
+🧠 Kab kya use kare?
+Situation	Use
+Simple async	Promise
+Multiple async steps	async/await
+Clean readable code	async/await
+Library APIs	Promise
+🎯 Interview One-liners 😎
+Promise
+
+Promise represents a value which may be available now, later, or never.
+
+async
+
+async makes a function return a Promise.
+
+await
+
+await pauses execution until the Promise resolves.
+
+🌍 Real Project Example (Angular / JS)
+async function getUser() {
+  try {
+    let response = await fetch("https://api.example.com/user");
+    let data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
+
+
+Agar chaho next:
+
+🔥 async/await + Event Loop relation
+
+🔥 Tricky output questions
+
+🔥 Promise chaining vs parallel execution
+
+bas bolo ❤️
+

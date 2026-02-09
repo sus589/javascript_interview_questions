@@ -1,0 +1,189 @@
+## in hinglish in javascript  clousure, throttle, debounce kya hai ,kaise use hota hai ,kaab use hota hai simple example deke samjhao
+
+Bohot sahi topic pakda 🔥
+Ye closure, throttle, debounce = interview ke favorite + real project ke hero hain.
+Main bilkul simple Hinglish + daily-life + JS examples se samjha rahi hoon 👇
+
+🔐 Closure kya hai? (JS ka hidden superpower)
+👉 Closure kya hota hai?
+
+Function + uska lexical scope = Closure
+
+Matlab:
+
+Ek function
+
+Apne outer function ke variables ko yaad rakhta hai
+
+Chahe outer function execute ho chuka ho
+
+🧠 Kab use hota hai?
+
+✔ Data hide karna
+✔ Private variables banana
+✔ Counter, caching, state maintain karna
+
+✅ Simple Example (Closure)
+function counter() {
+  let count = 0;
+
+  return function () {
+    count++;
+    console.log(count);
+  };
+}
+
+let increment = counter();
+
+increment(); // 1
+increment(); // 2
+increment(); // 3
+
+🔍 Samjho
+
+count bahar se access nahi hota
+
+inner function usko yaad rakhta hai
+➡️ Yehi closure hai
+
+🔄 Real-life Example
+
+ATM machine:
+
+balance private hai
+
+sirf withdraw/deposit ke through access
+
+⏱ Debounce kya hai?
+👉 Debounce kya karta hai?
+
+User ruk jaaye tab function chalao
+
+📌 Matlab:
+
+Continuous events ignore
+
+Last event ke baad hi execute
+
+🧠 Kab use hota hai?
+
+✔ Search box
+✔ Input validation
+✔ Resize event
+
+✅ Example (Debounce)
+function debounce(fn, delay) {
+  let timer;
+
+  return function () {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+function search() {
+  console.log("API Call");
+}
+
+let debounceSearch = debounce(search, 500);
+
+
+🧪 User type kare:
+
+a → ab → abc → abcd
+
+
+🖨 Output:
+
+API Call (sirf ek baar)
+
+🧠 Real-life example
+
+Lift ka button:
+
+10 baar press karo
+
+Lift rukne ke baad hi chalti hai 😄
+
+🚦 Throttle kya hai?
+👉 Throttle kya karta hai?
+
+Fixed time ke gap me hi function chalao
+
+📌 Matlab:
+
+Har event pe nahi
+
+Ek time window me ek baar
+
+🧠 Kab use hota hai?
+
+✔ Scroll event
+✔ Window resize
+✔ Mouse move
+
+✅ Example (Throttle)
+function throttle(fn, limit) {
+  let flag = true;
+
+  return function () {
+    if (flag) {
+      fn();
+      flag = false;
+
+      setTimeout(() => {
+        flag = true;
+      }, limit);
+    }
+  };
+}
+
+function onScroll() {
+  console.log("Scroll event fired");
+}
+
+let throttleScroll = throttle(onScroll, 1000);
+
+
+🖨 Output:
+
+Scroll event fired
+(1 sec gap ke baad hi dobara)
+
+🧠 Real-life example
+
+Traffic signal:
+
+Green light fixed interval pe hi milta hai 🚦
+
+🔥 Debounce vs Throttle (One look 👀)
+Feature	Debounce	Throttle
+Execution	Rukne ke baad	Fixed interval
+Best for	Search input	Scroll
+API calls	Kam	Controlled
+Continuous events	Ignore	Limited
+🎯 Interview One-Liners 😎
+Closure
+
+Closure allows a function to access variables from its outer scope even after execution.
+
+Debounce
+
+Debounce delays execution until the event stops firing.
+
+Throttle
+
+Throttle ensures function runs at most once in a given time interval.
+
+Agar chaho next:
+
+🔥 Angular real project use cases
+
+🔥 Tricky output questions
+
+🔥 Debounce vs Throttle diagram
+
+bas bolo 💙

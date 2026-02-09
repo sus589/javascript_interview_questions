@@ -1,0 +1,214 @@
+Perfect 🔥
+Ye topic thoda confusing lagta hai, but samajh aa gaya to Event Loop ke 80% doubts clear ho jaate hain.
+Chalo async/await + Event Loop ka real relation simple Hinglish me tod ke samjhte hain 👇
+
+🔄 async/await + Event Loop ka relation
+Sabse pehle ek CRUCIAL truth ⚠️
+
+👉 async/await koi naya thread nahi banata
+👉 async/await = Promise ka hi clean syntax hai
+
+📌 Matlab:
+
+async/await Event Loop ke rules follow karta hai
+specially Microtask Queue (Promise)
+
+🧠 Yaad rakhne ka golden rule ⭐
+
+await ke baad ka code = Promise.then() jaisa behave karta hai
+aur Promise.then() → Microtask Queue me jata hai
+
+🔁 Event Loop Priority (Recall)
+Call Stack
+⬇️
+Microtask Queue (Promise / async-await)
+⬇️
+Macrotask Queue (setTimeout)
+
+🧪 Simple Example (async/await + Event Loop)
+console.log("Start");
+
+async function test() {
+  console.log("Inside async");
+
+  await Promise.resolve();
+
+  console.log("After await");
+}
+
+test();
+
+console.log("End");
+
+🔍 Step-by-step Execution (Event Loop view)
+🟢 Step 1: Call Stack
+console.log("Start")
+
+
+Output:
+
+Start
+
+🟢 Step 2: async function call
+test()
+
+
+Inside test():
+
+console.log("Inside async")
+
+
+Output:
+
+Inside async
+
+🟡 Step 3: await mila
+await Promise.resolve();
+
+
+⚠️ IMPORTANT:
+
+JS await pe function ko pause karta hai
+
+neeche ka code Microtask Queue me chala jata hai
+
+Call Stack free ho jata hai
+
+🟢 Step 4: Normal sync continues
+console.log("End")
+
+
+Output:
+
+End
+
+🟢 Step 5: Event Loop starts
+Call Stack empty ✅
+↓
+Microtask Queue check
+↓
+"After await" execute
+
+
+Output:
+
+After await
+
+🖨 Final Output
+Start
+Inside async
+End
+After await
+
+🔥 async/await vs Promise.then (Proof)
+async/await version
+await something;
+console.log("After await");
+
+Promise version
+something.then(() => {
+  console.log("After await");
+});
+
+
+👉 Dono Microtask Queue me jaate hain ✅
+
+🧪 async/await + setTimeout (Real fight ⚔️)
+console.log("A");
+
+setTimeout(() => {
+  console.log("B");
+}, 0);
+
+async function test() {
+  await Promise.resolve();
+  console.log("C");
+}
+
+test();
+
+console.log("D");
+
+🔍 Execution Order
+
+A → Call Stack
+
+setTimeout → Macrotask Queue
+
+await ke baad ka code → Microtask Queue
+
+D → Call Stack
+
+Event Loop:
+
+Microtask first → C
+
+Macrotask later → B
+
+🖨 Output
+A
+D
+C
+B
+
+
+📌 Rule fir se confirm
+👉 async/await (Promise) hamesha setTimeout se pehle
+
+🧠 Diagram: async/await + Event Loop
+        Call Stack
+            |
+            v
+     async function start
+            |
+          await
+            |
+     ┌──────▼──────┐
+     │ Microtask Q │  ← after await
+     └──────┬──────┘
+            |
+        Event Loop
+            |
+     ┌──────▼──────┐
+     │ Macrotask Q │ ← setTimeout
+     └─────────────┘
+
+🎯 Interview One-liners 😎
+
+async/await is syntactic sugar over Promises
+
+await pauses execution but does NOT block the thread
+
+Code after await goes to Microtask Queue
+
+Microtasks always execute before Macrotasks
+
+🌍 Real Project Insight (Angular / JS)
+async ngOnInit() {
+  console.log("Init start");
+
+  await this.apiCall(); // async
+  console.log("API done");
+
+  setTimeout(() => {
+    console.log("Timeout");
+  }, 0);
+}
+
+
+🖨 Output:
+
+Init start
+API done
+Timeout
+
+
+Agar chaho next 🔥:
+
+⚡ Multiple await ka execution order
+
+⚡ Parallel vs Sequential await
+
+⚡ Tricky interview outputs (90% fail here)
+
+bas bolo ❤️

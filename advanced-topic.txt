@@ -1,6 +1,6 @@
 async ,await ,promise ,clousure, throttle, debounce ,deep copy object ,async using event loop,Normal function, Arrow function ,
 Anonymous function ,Callback function , Shallow copy , Deep copy , this ,Event Loop(JS ka async engine) ,Call Stack, Microtask 
-(Promise) ,Macrotask (setTimeout)
+(Promise) ,Macrotask (setTimeout) 
 
 
 

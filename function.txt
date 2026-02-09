@@ -1,0 +1,156 @@
+## in hinglish in javascript Normal function, Arrow function , Anonymous function ,Callback function kya hai ,kaise use hota hai ,
+kaab use hota hai simple example deke samjhao
+
+
+Perfect 👍
+Ye functions ke types JS ka base hai — interview + real project dono jagah kaam aata hai.
+Main bilkul simple Hinglish + daily-life + easy examples se samjha rahi hoon 👇
+
+🧩 JavaScript Functions ke Types (Simple Hinglish)
+1️⃣ Normal Function kya hai?
+
+👉 Normal function = traditional function
+
+📌 Kaise likhte hain?
+function greet() {
+  console.log("Hello");
+}
+
+🧠 Kab use hota hai?
+
+✔ Reusable logic
+✔ Hoisting chahiye
+✔ this keyword ka proper control chahiye
+
+✅ Example
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 3)); // 5
+
+🔍 Extra Point (Interview)
+
+Normal function hoisted hoti hai
+
+this value call pe depend karti hai
+
+2️⃣ Arrow Function kya hai?
+
+👉 Arrow function = short & modern syntax
+
+📌 Kaise likhte hain?
+const greet = () => {
+  console.log("Hello");
+};
+
+🧠 Kab use hota hai?
+
+✔ Short code chahiye
+✔ Callback me use
+✔ this ko outer scope se lena ho
+
+✅ Example
+const multiply = (a, b) => a * b;
+
+console.log(multiply(2, 4)); // 8
+
+⚠ Important Difference
+
+Arrow function hoisted nahi hota
+
+Arrow function ka apna this nahi hota
+
+3️⃣ Anonymous Function kya hai?
+
+👉 Anonymous function = function without name
+
+📌 Kaise use hota hai?
+
+Mostly function as value use hota hai
+
+✅ Example
+setTimeout(function () {
+  console.log("Hello after 1 sec");
+}, 1000);
+
+
+📌 Yaha function ka naam nahi hai → Anonymous function
+
+🧠 Kab use hota hai?
+
+✔ One-time use
+✔ Callback ke andar
+✔ Short logic
+
+4️⃣ Callback Function kya hai?
+
+👉 Callback = function jo dusre function ko argument me pass hota hai
+
+📌 Matlab:
+
+“Kaam ho jaaye, phir mujhe call karna”
+
+🧠 Kab use hota hai?
+
+✔ Async operations
+✔ Event handling
+✔ Array methods (map, filter)
+
+✅ Example
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+
+function sayBye() {
+  console.log("Bye");
+}
+
+greet("Rahul", sayBye);
+
+
+🖨 Output
+
+Hello Rahul
+Bye
+
+🔁 Callback (Anonymous + Arrow mix)
+setTimeout(() => {
+  console.log("Callback executed");
+}, 1000);
+
+🧠 Real-life Example 🌍
+
+📞 Phone call:
+
+Tum call lagao (main function)
+
+Friend call uthaye → callback
+
+🔥 Comparison Table (One Look 👀)
+Type	Name	Hoisting	this
+Normal	Yes	Yes	Dynamic
+Arrow	No	No	Lexical
+Anonymous	No	Depends	Depends
+Callback	Any	Depends	Depends
+🎯 Interview One-liners 😎
+
+Normal function is hoisted and has its own this
+
+Arrow function has no this
+
+Anonymous function has no name
+
+Callback function is passed as an argument
+
+Agar chaho next:
+
+🔥 this keyword deep dive
+
+🔥 Arrow vs Normal tricky outputs
+
+🔥 Callback hell & Promise relation
+
+bas bolo ❤️
+
