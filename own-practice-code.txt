@@ -1,0 +1,35 @@
+  //palimdrom
+
+  function palimdrom(str){
+      let start = 0;
+      let end = str.length-1;
+    
+    while(start<end){
+        start++;
+        end--;
+    }
+    if(str[start] !== str[end]){
+        return false;
+    }
+    return true;
+  }
+  console.log(palimdrom('12321'));
+
+
+  
+//largest number
+ 
+ function largetsNum(arr){
+     let max = arr[0];
+     for(let i=1; i<=arr.length-1;i++){
+         if(max<arr[i]){
+             max=arr[i];
+         }
+     }
+     return max;
+ } 
+ 
+ 
+ console.log(largetsNum([32,43,22,52,24,15]));
+
+ 

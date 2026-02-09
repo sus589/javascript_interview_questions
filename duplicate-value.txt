@@ -1,0 +1,25 @@
+// duplicate value from array
+ 
+ function duplicate(arr){
+     let unique = [];
+     let dupli = [];
+     for(let i=0;i<=arr.length-1;i++){
+         let duplicate =false;
+         for(let j=0;j<=unique.length-1;j++){
+             if(arr[i] === unique[j]){
+                 duplicate = true;
+                 dupli[dupli.length]=arr[i];
+                 break;
+             }
+         }
+         if(!duplicate){
+             unique[unique.length]=arr[i];
+         }
+     }
+    //  return unique;
+     return dupli;
+     
+ }
+ console.log(duplicate([3,5,3,2,4]));
+
+ 

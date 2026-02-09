@@ -1,0 +1,465 @@
+## in hinglish in javascript Event Loop(JS ka async engine) kya hai ,kaise use hota hai ,kaab use hota hai ,Call Stack kya hai ,
+kaise use hota hai ,kaab use hota hai , Microtask (Promise) kya hai ,kaise use hota hai ,kaab use hota hai ,Macrotask (setTimeout)
+ kya hai ,kaise use hota hai ,kaab use hota hai simple example deke samjhao
+
+
+
+ Perfect topic choose kiya 👍
+Event Loop = JS ka async heart ❤️
+Main bilkul simple Hinglish + real-life flow + easy examples se samjha rahi hoon.
+
+1️⃣ JavaScript Event Loop kya hai? (JS ka async engine)
+👉 JavaScript single-threaded hoti hai
+Matlab ek time pe ek hi kaam kar sakti hai.
+Phir bhi:
+
+
+API call
+
+
+setTimeout
+
+
+Promise
+
+
+click events
+
+
+sab saath-saath kaise chalte lagte hain?
+➡️ Iska jawab = Event Loop
+📌 Event Loop ka kaam
+
+Call Stack empty hone ka wait karta hai,
+phir Microtask aur Macrotask ko execute karwata hai.
+
+🧠 Socho:
+
+Event Loop ek traffic police hai
+jo decide karta hai kaunsa kaam pehle chalega
+
+
+2️⃣ Call Stack kya hai?
+👉 Call Stack ek stack hota hai jisme:
+
+
+functions execute hone ke liye aate hain
+
+
+LIFO rule follow karta hai (Last In First Out)
+
+
+📌 Kaise use hota hai?
+
+
+JS sabse pehle Call Stack check karti hai
+
+
+Jo function upar hota hai → wahi execute hota hai
+
+
+📌 Kab use hota hai?
+
+
+Synchronous code ke liye
+
+
+✅ Simple Example
+function one() {
+  console.log("One");
+}
+
+function two() {
+  console.log("Two");
+}
+
+one();
+two();
+
+🔍 Flow
+Call Stack:
+→ one()
+→ two()
+
+🖨 Output
+One
+Two
+
+
+3️⃣ Event Loop ka Full Flow (Important ⭐)
+JS ke paas hota hai:
+
+
+Call Stack
+
+
+Web APIs (browser deta hai)
+
+
+Microtask Queue
+
+
+Macrotask Queue
+
+
+Event Loop
+
+
+📌 Priority order:
+Call Stack
+⬇️
+Microtask Queue (HIGH priority)
+⬇️
+Macrotask Queue (LOW priority)
+
+
+4️⃣ Microtask kya hai? (Promise)
+👉 Microtask = High priority async task
+📌 Kaun aata hai Microtask me?
+
+
+Promise.then()
+
+
+catch()
+
+
+finally()
+
+
+queueMicrotask()
+
+
+📌 Kab use hota hai?
+
+
+Jab immediately async result chahiye
+
+
+UI block kiye bina fast response
+
+
+✅ Example
+console.log("Start");
+
+Promise.resolve().then(() => {
+  console.log("Promise");
+});
+
+console.log("End");
+
+🔍 Execution Flow
+
+
+Start → Call Stack
+
+
+Promise.then() → Microtask Queue
+
+
+End → Call Stack empty
+
+
+Event Loop → Microtask run
+
+
+🖨 Output
+Start
+End
+Promise
+
+
+5️⃣ Macrotask kya hai? (setTimeout)
+👉 Macrotask = Low priority async task
+📌 Kaun aata hai Macrotask me?
+
+
+setTimeout
+
+
+setInterval
+
+
+DOM events
+
+
+setImmediate
+
+
+📌 Kab use hota hai?
+
+
+Delay chahiye
+
+
+Background kaam
+
+
+Heavy task ko thoda baad chalana
+
+
+✅ Example
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+console.log("End");
+
+🖨 Output
+Start
+End
+Timeout
+
+
+6️⃣ Microtask vs Macrotask (Real Fight ⚔️)
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise");
+});
+
+console.log("End");
+
+🔍 Flow
+
+
+Start → Call Stack
+
+
+setTimeout → Macrotask Queue
+
+
+Promise → Microtask Queue
+
+
+End → Call Stack empty
+
+
+Event Loop:
+
+
+Microtask first
+
+
+then Macrotask
+
+
+
+
+🖨 Output
+Start
+End
+Promise
+Timeout
+
+📌 Rule yaad rakho
+👉 Promise hamesha setTimeout se pehle chalega
+
+7️⃣ One-Line Summary (Exam + Interview Ready 😎)
+TermMeaningCall StackSync code execute karta haiEvent LoopDecide karta hai next kaam kya hogaMicrotaskHigh priority async (Promise)MacrotaskLow priority async (setTimeout)
+
+8️⃣ Real-Life Example 🌍
+🧠 Socho tum restaurant me ho:
+
+
+Call Stack → Chef ka current dish
+
+
+Microtask → Urgent order (VIP)
+
+
+Macrotask → Normal order
+
+
+Event Loop → Manager jo decide kare kaunsa pehle
+
+
+
+Agar tum chaho:
+
+
+🔥 Diagram bana ke
+
+
+🔥 Angular / real project example
+
+
+🔥 Interview questions + tricky outputs
+
+
+bas bolo ❤️
+
+
+
+
+
+Diagram
+
+
+==========
+
+
+
+Perfect 👍
+Main step-by-step diagram + flow bana ke samjha rahi hoon — exactly jaise interview ya class me board pe banate hain 👇
+
+🧠 JavaScript Event Loop – Visual Diagram
+        ┌──────────────┐
+        │  Call Stack  │
+        └──────┬───────┘
+               │
+               ▼
+        ┌──────────────┐
+        │   Web APIs   │
+        │ (Browser)   │
+        │ setTimeout  │
+        │ fetch       │
+        │ Promise     │
+        └──────┬───────┘
+               │
+      ┌────────┴────────┐
+      ▼                 ▼
+┌──────────────┐  ┌──────────────┐
+│ Microtask Q  │  │ Macrotask Q  │
+│ (Promise)    │  │ (setTimeout)│
+└──────┬───────┘  └──────┬───────┘
+       │                 │
+       └────────┬────────┘
+                ▼
+          ┌──────────────┐
+          │  Event Loop  │
+          └──────────────┘
+
+🔁 Event Loop ka Kaam (Flow samjho)
+
+Event Loop continuously check karta hai 👇
+
+1️⃣ Call Stack empty hai?
+   ❌ No → wait
+   ✅ Yes → next step
+
+2️⃣ Microtask Queue me kuch hai?
+   ✅ Yes → pehle Microtask run
+   ❌ No → next step
+
+3️⃣ Macrotask Queue me kuch hai?
+   ✅ Yes → Macrotask run
+
+
+📌 Priority yaad rakho
+
+Call Stack
+⬇️
+Microtask (Promise)
+⬇️
+Macrotask (setTimeout)
+
+🧪 Diagram ke saath Example
+Code
+console.log("A");
+
+setTimeout(() => {
+  console.log("B");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("C");
+});
+
+console.log("D");
+
+🧩 Step-by-Step Diagram Execution
+🟢 Step 1: Call Stack
+Call Stack:
+console.log("A")
+
+
+Output:
+
+A
+
+🟢 Step 2: Web APIs
+setTimeout → Web API
+Promise → Web API
+
+
+Queues:
+
+Microtask Queue: Promise
+Macrotask Queue: setTimeout
+
+🟢 Step 3: Call Stack again
+console.log("D")
+
+
+Output:
+
+D
+
+🟢 Step 4: Event Loop starts
+Call Stack empty ✅
+↓
+Microtask Queue check → Promise found
+↓
+Promise executed
+
+
+Output:
+
+C
+
+🟢 Step 5: Macrotask
+Microtask empty
+↓
+Macrotask Queue check → setTimeout
+↓
+setTimeout executed
+
+
+Output:
+
+B
+
+🖨 Final Output Order
+A
+D
+C
+B
+
+🧠 Ultra-Short Diagram (Interview Trick 😎)
+
+Agar interviewer bole “Event Loop diagram banao”
+yeh 4 box bana do 👇
+
+[ Call Stack ]
+      ↓
+[ Microtask Queue ]
+      ↓
+[ Macrotask Queue ]
+      ↓
+[ Event Loop ]
+
+
+Aur bol do:
+
+"Event Loop pehle Call Stack clear hone ka wait karta hai,
+phir Microtask execute karta hai,
+uske baad Macrotask."
+
+💯 DONE.
+
+Agar chaho next:
+
+🔥 Angular async pipe + Event Loop
+
+🔥 Tricky output questions
+
+🔥 setTimeout(0) ka real meaning
+
+
