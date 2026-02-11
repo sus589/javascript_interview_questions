@@ -1,0 +1,1116 @@
+in hinglish mujhe samjhao aye code let runnersd = (((this.eventData2.bookMaker).map((d: any) => (d.bm1))).flat()).filter((rd: any) => { if (rd.mname == this.eventData?.bookheader) { return rd; } });
+
+
+Chalo is code ko step by step simple Hinglish me samjhte hain 👇
+
+let runnersd = (((this.eventData2.bookMaker)
+  .map((d: any) => (d.bm1)))
+  .flat())
+  .filter((rd: any) => {
+    if (rd.mname == this.eventData?.bookheader) {
+      return rd;
+    }
+  });
+
+🔹 Step 1: this.eventData2.bookMaker
+
+Ye ek array hai.
+Maan lo structure kuch aisa hai:
+
+bookMaker = [
+  { bm1: [ { mname: "Match1" }, { mname: "Match2" } ] },
+  { bm1: [ { mname: "Match3" }, { mname: "Match4" } ] }
+]
+
+🔹 Step 2: .map((d) => d.bm1)
+
+Ye kya kar raha hai?
+
+Har object se bm1 property nikaal raha hai.
+
+Result kya hoga?
+
+[
+  [ { mname: "Match1" }, { mname: "Match2" } ],
+  [ { mname: "Match3" }, { mname: "Match4" } ]
+]
+
+
+👉 Ab ye array ke andar array ban gaya (nested array).
+
+🔹 Step 3: .flat()
+
+.flat() nested array ko ek single array bana deta hai.
+
+Result:
+
+[
+  { mname: "Match1" },
+  { mname: "Match2" },
+  { mname: "Match3" },
+  { mname: "Match4" }
+]
+
+
+Ab sab ek hi level pe aa gaya ✅
+
+🔹 Step 4: .filter(...)
+
+Ab ye filter laga raha hai:
+
+.filter((rd) => {
+   if (rd.mname == this.eventData?.bookheader) {
+      return rd;
+   }
+})
+
+
+Ye kya kar raha hai?
+
+👉 Har object ka mname compare kar raha hai
+👉 this.eventData?.bookheader ke saath
+
+Agar match karega → wo object return hoga
+Agar match nahi karega → remove ho jayega
+
+Example:
+
+Agar:
+
+this.eventData.bookheader = "Match3"
+
+
+Final result hoga:
+
+[
+  { mname: "Match3" }
+]
+
+🔥 Short Summary
+
+Ye pura code kya kar raha hai?
+
+bookMaker array se sab bm1 arrays nikaal raha hai
+
+Unko ek single array me convert kar raha hai
+
+Phir mname ke basis pe filter kar raha hai
+
+Sirf wahi object return karega jiska mname = bookheader
+
+💡 Cleaner Version (Better Code)
+
+Tumhara filter thoda simple likh sakte ho:
+
+let runnersd = this.eventData2.bookMaker
+  .map((d: any) => d.bm1)
+  .flat()
+  .filter((rd: any) => rd.mname == this.eventData?.bookheader);
+
+
+Same output, code cleaner 👍
+
+
+## in hinglish aye mujhe samjhao let bm = runnersd.map((dt: any) => ({ ...dt, ordering: this.eventData?.bookt1 == dt.nat ? '1' : this.eventData?.bookt2 == dt.nat ? '2' : this.eventData?.bookt3 == dt.nat ? '3' : '', status: dt.s == 'SUSPENDED' ? 'Suspended' : dt.s == 'ACTIVE' ? 'Active' : dt.s, backOddsInfo: [dt.b1, dt.b2, dt.b3], layOddsInfo: [dt.l1, dt.l2, dt.l3] }) );
+
+
+
+Chalo is code ko bhi step by step simple Hinglish me samjhte hain 👇
+Ye thoda important hai kyunki yaha tum data ko UI ke liye prepare kar rahi ho 💻🔥
+
+🔹 Code
+let bm = runnersd.map((dt: any) => ({
+  ...dt,
+  ordering: this.eventData?.bookt1 == dt.nat ? '1' 
+           : this.eventData?.bookt2 == dt.nat ? '2' 
+           : this.eventData?.bookt3 == dt.nat ? '3' 
+           : '',
+  status: dt.s == 'SUSPENDED' ? 'Suspended' 
+          : dt.s == 'ACTIVE' ? 'Active' 
+          : dt.s,
+  backOddsInfo: [dt.b1, dt.b2, dt.b3],
+  layOddsInfo: [dt.l1, dt.l2, dt.l3]
+}));
+
+🔥 Overall Ye Code Kya Kar Raha Hai?
+
+👉 runnersd array ke har object ko modify kar raha hai
+👉 Naye extra properties add kar raha hai
+👉 UI friendly format bana raha hai
+
+🔹 Step 1: runnersd.map(...)
+
+map() kya karta hai?
+
+👉 Har element pe loop chala ke new array return karta hai
+
+Maan lo runnersd me 3 objects hain →
+To bm me bhi 3 objects honge (lekin modified)
+
+🔹 Step 2: { ...dt }
+
+Ye kya hai?
+
+👉 Spread operator
+
+Iska matlab:
+
+"Purana object ka saara data copy kar lo"
+
+Example:
+
+dt = { nat: "India", s: "ACTIVE", b1: 1.5 }
+
+
+...dt ka matlab:
+
+{
+  nat: "India",
+  s: "ACTIVE",
+  b1: 1.5
+}
+
+
+Fir hum usme naye fields add kar rahe hain 👇
+
+🔹 Step 3: ordering
+ordering: 
+this.eventData?.bookt1 == dt.nat ? '1'
+: this.eventData?.bookt2 == dt.nat ? '2'
+: this.eventData?.bookt3 == dt.nat ? '3'
+: ''
+
+
+Ye nested ternary condition hai.
+
+Simple language me:
+
+Agar bookt1 == dt.nat → ordering = "1"
+
+Agar bookt2 == dt.nat → ordering = "2"
+
+Agar bookt3 == dt.nat → ordering = "3"
+
+Nahi mila → empty string
+
+👉 Basically ye team ko 1st, 2nd, 3rd position assign kar raha hai.
+
+Example:
+eventData.bookt1 = "India"
+dt.nat = "India"
+
+
+Output:
+
+ordering = "1"
+
+🔹 Step 4: status
+status: dt.s == 'SUSPENDED' ? 'Suspended' 
+        : dt.s == 'ACTIVE' ? 'Active' 
+        : dt.s
+
+
+Ye kya kar raha hai?
+
+👉 Backend se jo status aa raha hai (dt.s)
+Usko thoda UI friendly bana raha hai.
+
+Example:
+
+Backend	UI me show
+SUSPENDED	Suspended
+ACTIVE	Active
+kuch aur	wahi show karega
+🔹 Step 5: backOddsInfo
+backOddsInfo: [dt.b1, dt.b2, dt.b3]
+
+
+Ye kya kar raha hai?
+
+👉 3 alag-alag values ko ek array me convert kar raha hai
+
+Example:
+
+b1 = 1.5
+b2 = 1.6
+b3 = 1.7
+
+
+Ban jayega:
+
+[1.5, 1.6, 1.7]
+
+
+Same cheez lay ke liye:
+
+layOddsInfo: [dt.l1, dt.l2, dt.l3]
+
+🔥 Final Output Structure
+
+Ab ek object kuch aisa dikhega:
+
+{
+  nat: "India",
+  s: "ACTIVE",
+  b1: 1.5,
+  b2: 1.6,
+  b3: 1.7,
+  l1: 1.8,
+  l2: 1.9,
+  l3: 2.0,
+  ordering: "1",
+  status: "Active",
+  backOddsInfo: [1.5, 1.6, 1.7],
+  layOddsInfo: [1.8, 1.9, 2.0]
+}
+
+🎯 Simple Summary
+
+Ye code:
+
+✔ Purane data ko copy kar raha hai
+✔ Team ka ordering set kar raha hai
+✔ Status ko readable bana raha hai
+✔ Back & Lay odds ko array format me convert kar raha hai
+✔ Final data ko UI ke liye ready kar raha hai
+
+Tum real-time bookmaker market bind kar rahi ho na Angular 19 me —
+Ye transformation UI rendering ke liye hi hota hai 🔥
+
+Agar chaho toh main iska flow diagram + Angular template binding example bhi bana ke samjha doon 👌
+
+
+
+## in hinglish aye samjhao bm.sort((a: any, b: any) => a.ordering.localeCompare(b.ordering)) this.runnersList2 = { bookmaker: bm, events: this.eventData };
+
+
+Chalo isko bhi simple Hinglish me step by step samjhte hain 👇🔥
+
+🔹 Code
+bm.sort((a: any, b: any) => a.ordering.localeCompare(b.ordering));
+
+this.runnersList2 = { 
+  bookmaker: bm, 
+  events: this.eventData 
+};
+
+🔥 Part 1: bm.sort(...)
+👉 sort() kya karta hai?
+
+Array ko arrange karta hai (ascending ya descending order me).
+
+🔹 Yaha kya ho raha hai?
+(a, b) => a.ordering.localeCompare(b.ordering)
+
+
+Ye sorting logic hai.
+
+👉 a.ordering aur b.ordering ko compare kar raha hai
+👉 localeCompare() string comparison karta hai
+
+🔹 localeCompare() kya karta hai?
+
+Ye do strings compare karta hai:
+
+Agar a chhota hai → negative value return
+
+Agar a bada hai → positive value return
+
+Agar dono same → 0
+
+Example:
+
+Maan lo bm me ordering values hain:
+
+[
+  { ordering: "2" },
+  { ordering: "1" },
+  { ordering: "3" }
+]
+
+
+Sort ke baad:
+
+[
+  { ordering: "1" },
+  { ordering: "2" },
+  { ordering: "3" }
+]
+
+
+👉 Matlab teams ab 1 → 2 → 3 order me aa jayengi
+
+💡 Important
+
+Tumne ordering ko string banaya tha:
+
+ordering: '1', '2', '3'
+
+
+Isliye localeCompare() use ho raha hai.
+Agar number hota to simple:
+
+a.ordering - b.ordering
+
+🔥 Part 2:
+this.runnersList2 = { 
+  bookmaker: bm, 
+  events: this.eventData 
+};
+
+
+Ye kya kar raha hai?
+
+👉 Ek object bana raha hai jisme:
+
+bookmaker → sorted bm array
+
+events → pura eventData object
+
+Final Structure:
+this.runnersList2 = {
+  bookmaker: [ ...sorted data... ],
+  events: { ...eventData... }
+}
+
+🎯 Overall Ye Code Kya Kar Raha Hai?
+
+Pehle bookmaker runners ko ordering ke hisaab se sort kar raha hai
+
+Phir final data ek object me pack kar raha hai
+
+UI me binding ke liye ready kar raha hai
+
+🔥 Real Angular Use Case
+
+Agar tum template me use kar rahi ho:
+
+<div *ngFor="let item of runnersList2.bookmaker">
+
+
+Toh ab wo sorted order me hi show hoga 👌
+
+
+## in hinglish aye mujhe samjhao else if (this.eventData2.bmProvider === 'Sky') { let bm = this.eventData2.bookMaker[0].map((dt: any) => ({ ...dt, ordering: this.eventData?.bookt1 == dt.runnerName ? '1' : this.eventData?.bookt2 == dt.runnerName ? '2' : this.eventData?.bookt3 == dt.runnerName ? '3' : '', status: dt.status == '2' ? 'Suspended' : dt.status == '1' ? 'Active' : dt.status, backOddsInfo: JSON.parse(dt.backOddsInfo).map(Number), layOddsInfo: JSON.parse(dt.layOddsInfo).map(Number) })); bm.sort((a: any, b: any) => a.ordering.localeCompare(b.ordering)) this.runnersList2 = { bookmaker: bm, events: this.eventData }; }
+
+
+Chalo Susmita 👩‍💻🔥 isko bhi step-by-step simple Hinglish me samjhte hain.
+Ye tumhara Sky provider ka special data transformation logic hai.
+
+🔥 Code
+else if (this.eventData2.bmProvider === 'Sky') {
+
+  let bm = this.eventData2.bookMaker[0].map((dt: any) => ({
+    ...dt,
+
+    ordering: this.eventData?.bookt1 == dt.runnerName ? '1'
+             : this.eventData?.bookt2 == dt.runnerName ? '2'
+             : this.eventData?.bookt3 == dt.runnerName ? '3'
+             : '',
+
+    status: dt.status == '2' ? 'Suspended'
+           : dt.status == '1' ? 'Active'
+           : dt.status,
+
+    backOddsInfo: JSON.parse(dt.backOddsInfo).map(Number),
+    layOddsInfo: JSON.parse(dt.layOddsInfo).map(Number)
+  }));
+
+  bm.sort((a: any, b: any) => a.ordering.localeCompare(b.ordering))
+
+  this.runnersList2 = { bookmaker: bm, events: this.eventData };
+}
+
+🔹 Step 1: Condition Check
+this.eventData2.bmProvider === 'Sky'
+
+
+👉 Agar bookmaker provider "Sky" hai
+Toh ye special logic run hoga.
+
+Matlab Sky ka data structure thoda different hai.
+
+🔹 Step 2: this.eventData2.bookMaker[0]
+
+⚠️ Important difference:
+
+Pehle tum direct bookMaker pe map kar rahi thi
+Yaha [0] laga hai.
+
+Matlab:
+
+bookMaker = [
+   [ {runner1}, {runner2}, {runner3} ]
+]
+
+
+Ye nested array hai.
+
+Isliye:
+
+bookMaker[0]
+
+
+Use kar ke inner array nikaal rahe ho.
+
+🔹 Step 3: .map(...)
+
+Har runner object ko modify kar rahe ho.
+
+🔹 Step 4: ...dt
+
+Purana data copy kar lo.
+
+🔹 Step 5: ordering
+this.eventData?.bookt1 == dt.runnerName
+
+
+⚠️ Difference Notice Karo:
+
+Pehle tum dt.nat compare kar rahi thi
+Yaha dt.runnerName
+
+Matlab Sky provider me runner ka naam runnerName field me aa raha hai.
+
+🔹 Step 6: status
+dt.status == '2' ? 'Suspended'
+: dt.status == '1' ? 'Active'
+
+
+⚠️ Important Difference:
+
+Pehle status aata tha:
+
+"SUSPENDED"
+"ACTIVE"
+
+
+Ab Sky me numeric format me aa raha hai:
+
+"1" → Active
+"2" → Suspended
+
+
+Tum usko readable bana rahi ho 👌
+
+🔹 Step 7: JSON.parse(dt.backOddsInfo)
+
+Ye bahut important part hai 🔥
+
+Sky ka data shayad aisa aa raha hai:
+
+dt.backOddsInfo = "[1.5,1.6,1.7]"
+
+
+Ye string hai ❌
+Array nahi hai.
+
+Isliye:
+
+JSON.parse(dt.backOddsInfo)
+
+
+Ban jayega:
+
+[1.5, 1.6, 1.7]
+
+
+Fir:
+
+.map(Number)
+
+
+Har element ko number me convert kar raha hai (safety ke liye).
+
+Same lay ke liye bhi.
+
+🔹 Step 8: Sorting
+bm.sort((a, b) => a.ordering.localeCompare(b.ordering))
+
+
+1 → 2 → 3 order me arrange kar dega.
+
+🔹 Step 9: Final Object
+this.runnersList2 = {
+  bookmaker: bm,
+  events: this.eventData
+};
+
+
+Ye UI binding ke liye final structure bana raha hai.
+
+🎯 Overall Ye Code Kya Kar Raha Hai?
+
+Agar provider = "Sky" hai:
+
+Nested array se data nikaal raha hai
+
+RunnerName ke basis pe ordering set kar raha hai
+
+Numeric status ko readable bana raha hai
+
+String odds ko real array me convert kar raha hai
+
+Sort kar raha hai
+
+UI ke liye final object bana raha hai
+
+🔥 Important Insight (Advanced Level)
+
+Tum basically 2 different providers handle kar rahi ho:
+
+Normal Provider	Sky Provider
+nat	runnerName
+SUSPENDED	"2"
+ACTIVE	"1"
+direct array	string JSON array
+
+Matlab tum real production level multi-provider handling kar rahi ho 💪🔥
+
+
+## in hinglish aye mujhe samjhao  else if (this.eventData2.bmProvider === 'World') {
+              let runnersdw = (this.eventData2.bookMaker).filter((rd: any) => {
+                if (rd.mname == this.eventData?.bookheader) {
+                  return rd;
+                }
+              });
+
+              let bm = runnersdw?.[0]?.section.map((dt: any) => ({
+                ...dt,
+                ordering: this.eventData?.bookt1 == dt.nat ? '1' : this.eventData?.bookt2 == dt.nat ? '2' : this.eventData?.bookt3 == dt.nat ? '3' : '',
+                status: dt.gstatus == 'SUSPENDED' ? 'Suspended' : dt.gstatus == 'ACTIVE' ? 'Active' : dt.gstatus,
+                backOddsInfo: dt.odds.filter((o: any) => o.otype == 'back').reverse().map((m: any) => m.odds),
+                layOddsInfo: dt.odds.filter((o: any) => o.otype == 'lay').map((m: any) => m.odds)
+              }));
+
+              bm.sort((a: any, b: any) => a.ordering.localeCompare(b.ordering))
+
+              this.runnersList2 = { bookmaker: bm, events: this.eventData };
+            }
+
+
+
+
+Chalo Susmita 👩‍💻🔥
+Ab World provider ka logic bhi simple Hinglish me breakdown karte hain.
+
+Ye thoda different hai kyunki iska data structure aur providers se alag hai.
+
+🔥 Code Structure
+else if (this.eventData2.bmProvider === 'World') {
+
+
+👉 Agar provider = "World" hai
+Toh ye wala logic chalega.
+
+🔹 Step 1: Filter Bookmaker by Market Name
+let runnersdw = (this.eventData2.bookMaker).filter((rd: any) => {
+  if (rd.mname == this.eventData?.bookheader) {
+    return rd;
+  }
+});
+
+Ye kya kar raha hai?
+
+bookMaker array me multiple markets ho sakte hain
+
+Har market ka mname hota hai
+
+Tum sirf wahi market chah rahi ho jiska naam bookheader ke equal ho
+
+Example:
+bookMaker = [
+  { mname: "Match Odds", section: [...] },
+  { mname: "Bookmaker", section: [...] }
+]
+
+
+Agar:
+
+bookheader = "Bookmaker"
+
+
+Toh filter ke baad:
+
+runnersdw = [
+  { mname: "Bookmaker", section: [...] }
+]
+
+🔹 Step 2: Access section
+let bm = runnersdw?.[0]?.section.map(...)
+
+Important:
+
+runnersdw array hai
+
+[0] se first matched market le rahe ho
+
+.section me actual runners data hai
+
+Structure kuch aisa hoga:
+
+{
+  mname: "Bookmaker",
+  section: [
+    { nat: "India", odds: [...] },
+    { nat: "Australia", odds: [...] }
+  ]
+}
+
+🔹 Step 3: Map & Modify Runner
+.map((dt: any) => ({
+  ...dt,
+
+
+Purana runner data copy ho gaya.
+
+🔹 Step 4: Ordering Logic
+ordering:
+bookt1 == dt.nat ? '1'
+: bookt2 == dt.nat ? '2'
+: bookt3 == dt.nat ? '3'
+: ''
+
+
+Same logic as before.
+
+dt.nat = team name
+Match karega to position assign karega.
+
+🔹 Step 5: Status Conversion
+status:
+dt.gstatus == 'SUSPENDED' ? 'Suspended'
+: dt.gstatus == 'ACTIVE' ? 'Active'
+: dt.gstatus
+
+
+⚠️ Notice difference:
+
+Yaha status field gstatus hai
+Dusre providers me s ya status tha.
+
+Tum usko UI-friendly bana rahi ho.
+
+🔥 Step 6: Back Odds Extract Karna
+backOddsInfo:
+dt.odds
+  .filter((o) => o.otype == 'back')
+  .reverse()
+  .map((m) => m.odds)
+
+
+Ye important part hai 👇
+
+Maan lo dt.odds aisa hai:
+odds = [
+  { otype: "back", odds: 1.5 },
+  { otype: "back", odds: 1.6 },
+  { otype: "lay", odds: 1.7 },
+  { otype: "lay", odds: 1.8 }
+]
+
+Step-by-step:
+
+1️⃣ .filter(o => o.otype == 'back')
+
+Sirf back odds nikaal lega:
+
+[
+  { otype: "back", odds: 1.5 },
+  { otype: "back", odds: 1.6 }
+]
+
+
+2️⃣ .reverse()
+
+Order ulta kar dega:
+
+[
+  { otype: "back", odds: 1.6 },
+  { otype: "back", odds: 1.5 }
+]
+
+
+3️⃣ .map(m => m.odds)
+
+Sirf odds value nikaal lega:
+
+[1.6, 1.5]
+
+
+👉 Final backOddsInfo ready.
+
+🔹 Step 7: Lay Odds
+layOddsInfo:
+dt.odds
+  .filter((o) => o.otype == 'lay')
+  .map((m) => m.odds)
+
+
+Same process, bas lay ke liye.
+
+Result:
+
+[1.7, 1.8]
+
+🔹 Step 8: Sorting
+bm.sort((a, b) => a.ordering.localeCompare(b.ordering))
+
+
+1 → 2 → 3 order me arrange karega.
+
+🔹 Step 9: Final UI Object
+this.runnersList2 = {
+  bookmaker: bm,
+  events: this.eventData
+};
+
+
+Final object ready for Angular template binding.
+
+🎯 Overall World Provider Me Kya Ho Raha Hai?
+
+Correct market select kar rahe ho
+
+Section se runners nikaal rahe ho
+
+Runner ko transform kar rahe ho
+
+gstatus ko readable bana rahe ho
+
+Odds array me se back/lay alag kar rahe ho
+
+Back odds ko reverse kar rahe ho (UI order ke liye)
+
+Sort kar rahe ho
+
+Final data UI ko de rahe ho
+
+🔥 Important Observation
+
+Ab tak tum 3 providers handle kar chuki ho:
+
+Provider	Runner Name Field	Status Field	Odds Format
+Normal	nat	s	direct b1,l1
+Sky	runnerName	numeric	JSON string
+World	nat	gstatus	array with otype
+
+👉 Ye real production-level multi-provider normalization hai 🔥
+
+
+
+
+## in hinglish aye mujhe samjhao let runnersd = (((res.message2['data']).map((d: any) => (d.bm1))).flat()).filter((rd: any) => { if (rd.mname == this.eventData?.bookheader) { return rd; } });
+
+
+Chalo Susmita 👩‍💻🔥
+Isko bhi simple Hinglish me step-by-step samjhte hain.
+
+🔥 Code
+let runnersd = (((res.message2['data'])
+  .map((d: any) => (d.bm1)))
+  .flat())
+  .filter((rd: any) => {
+    if (rd.mname == this.eventData?.bookheader) {
+      return rd;
+    }
+  });
+
+🎯 Overall Ye Code Kya Kar Raha Hai?
+
+👉 API response (res) se data nikaal raha hai
+👉 bm1 array collect kar raha hai
+👉 Nested array ko flat kar raha hai
+👉 Sirf wahi market select kar raha hai jiska mname = bookheader
+
+🔹 Step 1: res.message2['data']
+
+Ye API response ka main data array hai.
+
+Structure kuch aisa ho sakta hai:
+
+res = {
+  message2: {
+    data: [
+      { bm1: [ { mname: "Bookmaker1" }, { mname: "Bookmaker2" } ] },
+      { bm1: [ { mname: "Bookmaker3" } ] }
+    ]
+  }
+}
+
+🔹 Step 2: .map(d => d.bm1)
+
+Har object se bm1 nikaal raha hai.
+
+Result:
+
+[
+  [ { mname: "Bookmaker1" }, { mname: "Bookmaker2" } ],
+  [ { mname: "Bookmaker3" } ]
+]
+
+
+⚠️ Ye ab array ke andar array ho gaya.
+
+🔹 Step 3: .flat()
+
+Nested array ko ek single level array bana deta hai.
+
+Result:
+
+[
+  { mname: "Bookmaker1" },
+  { mname: "Bookmaker2" },
+  { mname: "Bookmaker3" }
+]
+
+
+Ab sab ek hi level pe aa gaya.
+
+🔹 Step 4: .filter(...)
+.filter((rd) => {
+  if (rd.mname == this.eventData?.bookheader) {
+    return rd;
+  }
+})
+
+
+Ye kya kar raha hai?
+
+👉 Har object ka mname check kar raha hai
+👉 Agar wo bookheader ke equal hai
+👉 To usko final array me rakh raha hai
+
+Example:
+
+Agar:
+
+this.eventData.bookheader = "Bookmaker2"
+
+
+Final result:
+
+[
+  { mname: "Bookmaker2" }
+]
+
+💡 Cleaner Version (Better Practice)
+
+Tum isko thoda clean likh sakti ho:
+
+let runnersd = res.message2['data']
+  .map((d: any) => d.bm1)
+  .flat()
+  .filter((rd: any) => rd.mname == this.eventData?.bookheader);
+
+
+Same output, code readable 👍
+
+🧠 Simple Flow Samjho
+
+API →
+Data →
+bm1 arrays →
+Flat →
+Filter by mname →
+Correct market mil gaya ✅
+
+Ye basically tum real-time bookmaker market pick kar rahi ho response se, phir aage usko transform karogi UI ke liye.
+
+Agar chaho toh main tumhe iska full visual flow bana ke samjha du (API response se final runnersList tak) 💻🔥
+
+
+
+## in hinglish mujhe samjhao let fancydatas = res.message4.world; this.fancyDataList = fancydatas.map((dt: any) => ({ ...dt, gstatus: dt.gstatus == 'SUSPENDED' ? 'SUSPENDED' : dt.gstatus == 'ACTIVE' ? 'Active' : dt.gstatus, b1: dt.odds.filter((o: any) => o.otype == 'back').map((m: any) => m.odds)[0] || 0, bs1: dt.odds.filter((o: any) => o.otype == 'back').map((m: any) => m.size)[0] || 0, l1: dt.odds.filter((o: any) => o.otype == 'lay').map((m: any) => m.odds)[0] || 0, ls1: dt.odds.filter((o: any) => o.otype == 'lay').map((m: any) => m.size)[0] || 0, gtype: 'Fancy', ballsess: '1' }) );
+
+
+Chalo Susmita 👩‍💻🔥
+Ab Fancy market (world) ka code simple Hinglish me samjhte hain step-by-step.
+
+🔥 Code
+let fancydatas = res.message4.world;
+
+this.fancyDataList = fancydatas.map((dt: any) => ({
+  ...dt,
+
+  gstatus: dt.gstatus == 'SUSPENDED' ? 'SUSPENDED'
+          : dt.gstatus == 'ACTIVE' ? 'Active'
+          : dt.gstatus,
+
+  b1: dt.odds.filter((o: any) => o.otype == 'back')
+             .map((m: any) => m.odds)[0] || 0,
+
+  bs1: dt.odds.filter((o: any) => o.otype == 'back')
+              .map((m: any) => m.size)[0] || 0,
+
+  l1: dt.odds.filter((o: any) => o.otype == 'lay')
+             .map((m: any) => m.odds)[0] || 0,
+
+  ls1: dt.odds.filter((o: any) => o.otype == 'lay')
+              .map((m: any) => m.size)[0] || 0,
+
+  gtype: 'Fancy',
+  ballsess: '1'
+}));
+
+🎯 Overall Ye Code Kya Kar Raha Hai?
+
+👉 API se world fancy data le raha hai
+👉 Har fancy item ko modify kar raha hai
+👉 Back/Lay odds nikaal ke flat fields bana raha hai
+👉 UI ke liye simple structure bana raha hai
+
+🔹 Step 1: Data lena
+let fancydatas = res.message4.world;
+
+
+Matlab API response me:
+
+res.message4.world
+
+
+Ye fancy market ka array hai.
+
+Example:
+
+world: [
+  {
+    gstatus: "ACTIVE",
+    odds: [
+      { otype: "back", odds: 95, size: 1000 },
+      { otype: "lay", odds: 96, size: 800 }
+    ]
+  }
+]
+
+🔹 Step 2: .map()
+
+Har fancy object ko modify kar rahe ho.
+
+🔹 Step 3: ...dt
+
+Purana data copy kar lo.
+
+🔹 Step 4: gstatus convert karna
+gstatus:
+'SUSPENDED' → 'SUSPENDED'
+'ACTIVE' → 'Active'
+
+
+Yaha sirf ACTIVE ko proper case me kar rahi ho.
+
+🔥 Step 5: b1 (Back Odds First Value)
+b1: dt.odds
+       .filter(o => o.otype == 'back')
+       .map(m => m.odds)[0] || 0
+
+
+Step-by-step:
+
+1️⃣ Sirf back odds nikaalo
+2️⃣ Unka odds value lo
+3️⃣ First element [0] lo
+4️⃣ Agar kuch nahi mila → 0 de do
+
+Example:
+
+[
+  { otype: "back", odds: 95, size: 1000 }
+]
+
+
+Result:
+
+b1 = 95
+
+🔹 Step 6: bs1 (Back Size)
+
+Same logic, bas size le rahe ho.
+
+bs1 = 1000
+
+🔹 Step 7: l1 (Lay Odds First Value)
+
+Lay ke liye same process.
+
+l1 = 96
+
+🔹 Step 8: ls1 (Lay Size)
+ls1 = 800
+
+🔹 Step 9: Extra Static Fields
+gtype: 'Fancy'
+ballsess: '1'
+
+
+Ye tum manually add kar rahi ho.
+
+Matlab:
+
+Har object me fixed:
+
+gtype = Fancy
+ballsess = 1
+
+
+Shayad UI condition ke liye use hota hoga.
+
+🧠 Final Output Structure
+
+Ab ek fancy object aisa dikhega:
+
+{
+  gstatus: "Active",
+  b1: 95,
+  bs1: 1000,
+  l1: 96,
+  ls1: 800,
+  gtype: "Fancy",
+  ballsess: "1"
+}
+
+🔥 Important Insight
+
+World provider me:
+
+Odds array me aata hai
+
+Tum usko flat fields me convert kar rahi ho
+
+Sirf first back & first lay use kar rahi ho
+
+Ye UI table rendering ke liye simplify karna hai 💻
+
+⚡ Cleaner + Optimized Version (Professional Level)
+
+Abhi tum 4 baar filter chala rahi ho (performance thoda heavy).
+
+Better way:
+
+this.fancyDataList = fancydatas.map((dt: any) => {
+
+  const back = dt.odds.find((o: any) => o.otype === 'back') || {};
+  const lay = dt.odds.find((o: any) => o.otype === 'lay') || {};
+
+  return {
+    ...dt,
+    gstatus: dt.gstatus === 'ACTIVE' ? 'Active' : dt.gstatus,
+    b1: back.odds || 0,
+    bs1: back.size || 0,
+    l1: lay.odds || 0,
+    ls1: lay.size || 0,
+    gtype: 'Fancy',
+    ballsess: '1'
+  };
+});
+
+
+👉 Ye zyada clean + fast hai
+👉 Interview me impress karega 😎🔥
+
+Agar chaho toh main tumhe bata sakti hoon kaise ye pura bookmaker + fancy + world + sky ko ek hi reusable normalizer function me convert kare — jo tumhe 10–12 LPA level ka coding structure sikha de 💪
+
+
+
+
+
