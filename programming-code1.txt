@@ -1,0 +1,64 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("Try programiz.pro");
+
+function secondLargestNumber(arr){
+    let largest = -Infinity;
+    let secondLargest = -Infinity;
+    for(let i=0;i<=arr.length-1;i++){
+        if(arr[i]>largest){
+            largest = arr[i];
+        }else if(arr[i]>secondLargest && arr[i]<largest){
+            secondLargest = arr[i];
+        }
+    }
+    return secondLargest;
+}
+
+console.log(secondLargestNumber([2,4,6,8,12,43,30,34]));
+
+
+function minNo(arr){
+    let min=arr[0];
+    for(let i=1;i<=arr.length-1;i++){
+        if(arr[i]<min){
+            min = arr[i];
+        }
+    }
+    return  min;
+}
+
+console.log(minNo([3,6,1,8,6,2,-4 ,-1,-6]));
+
+
+function frequencyNum(arr){
+    let frequency={};
+    for(let i=0;i<=arr.length-1;i++){
+        let element = arr[i];
+        if(frequency[element]){
+            frequency[element]=frequency[element]+1;
+        }else{
+            frequency[element] =1;
+        }
+    }
+    return frequency;
+}
+console.log(frequencyNum([2,5,2,5,6,7,6,6,2,7]));
+
+
+// function duplicateNo(arr){
+//     let unique =[];
+//     for(let i=0;i<arr.length-1;i++){
+//         let duplicate = false;
+//         for(let j=0;j<arr.length-1;j++){
+//             if(arr[i]===unique[j]){
+//                 duplicate = true;
+//                 break;
+//             }
+//         }
+//     }
+//     return unique;
+// }
+// console.log(duplicateNo([3,5,6,2,3,5,9,8]));
+
