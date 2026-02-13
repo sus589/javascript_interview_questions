@@ -47,18 +47,40 @@ function frequencyNum(arr){
 console.log(frequencyNum([2,5,2,5,6,7,6,6,2,7]));
 
 
-// function duplicateNo(arr){
-//     let unique =[];
-//     for(let i=0;i<arr.length-1;i++){
-//         let duplicate = false;
-//         for(let j=0;j<arr.length-1;j++){
-//             if(arr[i]===unique[j]){
-//                 duplicate = true;
-//                 break;
-//             }
-//         }
-//     }
-//     return unique;
-// }
-// console.log(duplicateNo([3,5,6,2,3,5,9,8]));
+function duplicateNo(arr){
+    let unique =[];
+    for(let i=0;i<=arr.length-1;i++){
+        let duplicate = false;
+        for(let j=0;j<=unique.length-1;j++){
+            if(arr[i]===unique[j]){
+                duplicate = true;
+                break;
+            }
+        }
+        
+          if(!duplicate){
+        unique[unique.length]=arr[i];
+    }
+    }
+  
+    return unique;
+}
+console.log(duplicateNo([3,5,6,2,3,5,9,8]));
+
+
+
+function palimdrom(str){
+    let start =0;
+    let end =str.length-1;
+    while(start<end){
+        if(str[start] !== str[end]){
+            return false;
+            break;
+        }
+        start++;
+        end--;
+    }
+    return true;
+}
+console.log(palimdrom('madam'));
 

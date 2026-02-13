@@ -16,9 +16,6 @@ function palimdrom(str){
     }
     return true;
 }
-
-
-
 console.log(palimdrom("madamt"));
 
 //reverse
@@ -181,3 +178,9 @@ function frequency(arr){
 }
 
 console.log(frequency([1, 2, 2, 3, 1, 4, 2]));
+
+
+function reverse(str){
+   return str.split('').reverse().join('');
+}
+console.log(reverse('susmita'));
