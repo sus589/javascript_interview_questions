@@ -1,0 +1,18 @@
+function maxProfitt(arr){
+    let maxProfit =0;
+    for(let i=0;i<arr.length;i++){
+        for(let j=i;j<arr.length;j++){
+            let profit = arr[j]-arr[i];
+            if(profit> 0 && profit> maxProfit){
+                maxProfit = profit;
+            }
+            else if(profit <0 && profit> maxProfit){
+                return 0;
+            }
+        }
+    }
+    return maxProfit;
+}
+console.log(maxProfitt([7,1,5,3,6,9]));
+// console.log(maxProfitt([7,6,4,3,1]));
+
