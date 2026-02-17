@@ -184,3 +184,54 @@ function reverse(str){
    return str.split('').reverse().join('');
 }
 console.log(reverse('susmita'));
+
+//  vowel 
+
+function countVowels(str){
+   let count =0;
+   let vowel ="aeiouAEIOU";
+   for(let i =0; i<str.length; i++){
+       if(vowel.includes(str[i])){
+           count ++;
+       }
+   }
+   return count;
+}
+console.log(countVowels('susmitai'));
+
+//  shiftingzero
+
+function sfitZero(arr){
+    let x=0;
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]!==0){
+            let  temp =arr[x];
+            arr[x]=arr[i];
+            arr[i] = temp;
+            x =x+1;
+        }
+    }
+    return arr;
+}
+console.log(sfitZero([0,1,0,3,12]));
+console.log(sfitZero([0]));
+
+// wrong answer
+//max consecutive 
+function maxConsecutive(arr){
+    let count =0;
+    for(let i=0; i<arr.length;i++){
+        if(arr[i]==0 || arr[i]!==1){
+            count =0 ;
+            continue;
+        }else{
+            count++;
+        }
+    }
+    return count;
+}
+// console.log(maxConsecutive([1,1,0,1,1,1,0,0,1,1,1,1,1,1]));
+console.log(maxConsecutive([1,0,1,1,0,1]));
+
+
+
