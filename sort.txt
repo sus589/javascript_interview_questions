@@ -1,0 +1,62 @@
+//bubble sort 
+
+function sort(arr){
+    for(let i=0; i<=arr.length-1;i++){
+        let isSwapped = false;
+        for(let j=0;j<=arr.length-1-i;j++){
+            if(arr[j]>arr[j+1]){
+                let temp = arr[j];
+            arr[j]=arr[j+1];
+            arr[j+1]=temp;
+            isSwapped =true;
+            }
+            
+        }
+        if(!isSwapped){
+            break;
+        }
+    }
+    return arr;
+}
+
+console.log(sort([5,2,4,1,6,8,3]));
+
+
+//selection sort
+
+function sort1(arr){
+    for(let i=0; i<arr.length-1;i++){
+        let min=i;
+        for(let j=i+1;j<arr.length;j++){
+            if(arr[j]<arr[min]){
+                min=j;
+            }
+        }
+        
+        let temp = arr[i];
+        arr[i] =arr[min];
+        arr[min] =temp;
+    }
+    return arr;
+}
+console.log(sort1([5,2,4,6,8]));
+
+
+//insertion sort
+
+function sort2(arr){
+    for(let i=1;i<arr.length;i++){
+    let curr = arr[i];
+    let prev =i-1;
+    while(arr[prev]>curr && prev>=0){
+        arr[prev+1]=arr[prev];
+        prev--;
+    }
+    arr[prev +1]=curr;
+    }
+    return  arr;
+}
+console.log(sort2([7,4,3,5,1,2]));
+
+
+

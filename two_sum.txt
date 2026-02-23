@@ -1,0 +1,172 @@
+function twoSum(nums, target) {
+    let map = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        let complement = target - nums[i];
+
+        if (map[complement] !== undefined) {
+            return [map[complement], i];
+        }
+
+        map[nums[i]] = i;
+    }
+}
+
+one loop + map
+
+
+Bilkul 👩‍💻🔥
+Main tumhe step-by-step dry run karaati hoon simple Hinglish me.
+
+Ye code kya karta hai?
+
+function twoSum(nums, target) {
+    let map = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        let complement = target - nums[i];
+
+        if (map[complement] !== undefined) {
+            return [map[complement], i];
+        }
+
+        map[nums[i]] = i;
+    }
+}
+🧠 Pehle Concept Samjho
+
+Hum kya kar rahe hain?
+
+👉 Har number ke liye check kar rahe hain
+“Iska pair pehle mil chuka hai kya?”
+
+Isliye hum ek map use kar rahe hain jisme:
+
+number : uska index
+
+store karte jaa rahe hain.
+
+✅ Example 1
+nums = [2,7,11,15]
+target = 9
+🔹 Step 1 (i = 0)
+
+nums[i] = 2
+
+complement = 9 - 2 = 7
+
+map me 7 hai kya?
+❌ Nahi hai
+
+Toh kya karenge?
+map me store kar denge:
+
+map = { 2: 0 }
+🔹 Step 2 (i = 1)
+
+nums[i] = 7
+
+complement = 9 - 7 = 2
+
+map me 2 hai kya?
+✅ Haan hai!
+
+map[2] = 0
+
+Matlab pair mil gaya 🎉
+
+Return:
+
+[0, 1]
+
+Done. Loop stop.
+
+✅ Example 2
+nums = [3,2,4]
+target = 6
+🔹 Step 1 (i = 0)
+
+nums[i] = 3
+complement = 6 - 3 = 3
+
+map me 3 hai kya?
+❌ Nahi
+
+Store karo:
+
+map = { 3: 0 }
+🔹 Step 2 (i = 1)
+
+nums[i] = 2
+complement = 6 - 2 = 4
+
+map me 4 hai kya?
+❌ Nahi
+
+Store karo:
+
+map = { 3: 0, 2: 1 }
+🔹 Step 3 (i = 2)
+
+nums[i] = 4
+complement = 6 - 4 = 2
+
+map me 2 hai kya?
+✅ Haan hai
+
+map[2] = 1
+
+Return:
+
+[1, 2]
+✅ Example 3
+nums = [3,3]
+target = 6
+🔹 Step 1 (i = 0)
+
+nums[i] = 3
+complement = 3
+
+map me 3 hai? ❌
+
+Store:
+
+map = { 3: 0 }
+🔹 Step 2 (i = 1)
+
+nums[i] = 3
+complement = 3
+
+map me 3 hai? ✅
+
+Return:
+
+[0, 1]
+💡 Important Logic Trick
+
+Notice karo:
+
+Hum pehle check karte hain
+Phir store karte hain
+
+Isi wajah se same element twice use nahi hota.
+
+⚡ Why This Is Powerful?
+
+✔ Sirf 1 loop
+✔ Time Complexity = O(n)
+✔ Interview me expected solution
+✔ Nested loop se faster
+
+🧠 Simple One Line Summary
+
+Har number ke liye check karo
+“Target - current number” pehle mil chuka hai kya?
+
+Agar haan → answer
+Agar nahi → store karo
+
+Agar chaho toh main tumhe iska memory diagram bana ke dikhau taaki tum future me kabhi confuse na ho 😎
+
+
+
