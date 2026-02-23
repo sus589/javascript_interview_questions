@@ -60,3 +60,21 @@ console.log(sort2([7,4,3,5,1,2]));
 
 
 
+Agar tum 10–12 LPA target kar rahe ho 🚀
+Toh DSA ignore mat karo. At least:
+
+Time Complexity
+
+Sorting
+
+HashMap
+
+Two Pointer
+
+Recursion
+
+Ye strong hona chahiye.
+
+
+
+
