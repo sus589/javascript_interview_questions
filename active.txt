@@ -1,0 +1,86 @@
+active class pe aye lagega   .bg-blue-600 { 
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}  active nhi hoga toh aye lagega .bg-\[\#232c44\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(35 44 68 / var(--tw-bg-opacity, 1));
+} kaise kare
+
+Samajh gaya 👍
+Tum chahte ho:
+
+✅ Active ho toh → bg-blue-600
+
+❌ Active na ho toh → bg-[#232c44]
+
+Tum Angular use kar rahe ho (Angular 19/20), toh ye kaam ngClass se easily ho jayega.
+
+✅ ✅ Method 1: [ngClass] (Best & Clean)
+🔹 TS File
+activeTab: string = 'home';
+
+setActive(tab: string) {
+  this.activeTab = tab;
+}
+🔹 HTML
+<div
+  (click)="setActive('home')"
+  [ngClass]="activeTab === 'home' ? 'bg-blue-600' : 'bg-[#232c44]'"
+  class="text-white px-4 py-2 rounded cursor-pointer"
+>
+  Home
+</div>
+What is this?
+
+✔ Agar activeTab === 'home' → blue
+✔ Nahi toh → dark background
+
+✅ Method 2: Class Binding (Thoda Clean)
+<div
+  (click)="setActive('home')"
+  [class.bg-blue-600]="activeTab === 'home'"
+  [class.bg-[#232c44]]="activeTab !== 'home'"
+  class="text-white px-4 py-2 rounded cursor-pointer"
+>
+  Home
+</div>
+What is this?
+
+⚠ Problem:
+bg-[#232c44] me special character # hai — kabhi kabhi Angular direct bind nahi karta.
+
+Isliye better hai method 1 use karo.
+
+✅ Method 3: Multiple Tabs Example (Professional Way)
+
+Agar multiple tabs hai:
+
+<div
+  *ngFor="let tab of ['home','sports','casino']"
+  (click)="setActive(tab)"
+  [ngClass]="{
+    'bg-blue-600': activeTab === tab,
+    'bg-[#232c44]': activeTab !== tab
+  }"
+  class="text-white px-4 py-2 rounded cursor-pointer"
+>
+  {{ tab }}
+</div>
+What is this?
+
+Ye clean aur scalable hai.
+
+💡 Extra Professional Tip (Tumhare Level Ke Liye)
+
+Tum real-time betting UI pe kaam kar rahe ho, toh agar tabs dynamic hai (jaise Fancybet, Sportsbook) toh aise karo:
+
+[class.bg-blue-600]="activeTab === tab.name"
+What is this?
+🔥 Final Suggestion
+
+Best aur safe method:
+
+[ngClass]="activeTab === 'home' ? 'bg-blue-600' : 'bg-[#232c44]'"
+What is this?
+
+Agar tum chaho toh mai tumhara exact HTML dekh ke modify karke perfect version bana du 👌
